@@ -25,3 +25,6 @@ class God {
             return Defense;
         }
 };
+
+// Global counters for the members  of each team, initialized to 0.
+int WerewolfCount = 0, VampireCount = 0;
