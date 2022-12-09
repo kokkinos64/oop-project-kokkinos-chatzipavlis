@@ -3,7 +3,3 @@
 
 using namespace std;
 
-
-class Vampires : public God {
-    
-}

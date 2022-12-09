@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include "God.h"
-#include "Werewolves.h"
-#include "Vampires.h"
+#include "Werewolf.h"
+#include "Vampire.h"
 
 int main(void)
 {
