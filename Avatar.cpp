@@ -11,7 +11,7 @@ Avatar::Avatar(char t) : Team_Selection(t)
     cout << "Avatar created.\n";
 }
 
-void Avatar::Move(void)
+char Avatar::Move(void)
 {
 	int getch();
 	char inputkey;
@@ -20,18 +20,28 @@ void Avatar::Move(void)
 
 	while (inputkey != '0')
 	{
-		if (!_kbhit())
+		if (inputkey == 72)
 		{
-			continue;
+			cout << "UP\n";
+			return 'u';
 		}
-		else
+		else if (inputkey == 80)
 		{
-			if (inputkey == 'α')
-			{
-				cout << "UP\n";
-			}
-			inputkey = getch();
+			cout << "DOWN\n";
+			return 'd';
 		}
+		else if (inputkey == 75)
+		{
+			cout << "LEFT\n";
+			return 'l';
+		}
+		else if (inputkey == 77)
+		{
+			cout << "RIGHT\n";
+			return 'r';
+		}
+
+		inputkey = getch();
 	}
 
 

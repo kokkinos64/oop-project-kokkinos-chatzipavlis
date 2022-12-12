@@ -8,5 +8,5 @@ private:
 
 public:
     Avatar(char);   // Constructor
-    void Move(void);
+    char Move(void);
 };
