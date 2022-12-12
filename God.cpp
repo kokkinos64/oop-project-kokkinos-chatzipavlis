@@ -24,6 +24,16 @@ God::God(void)
     cout << "God's here.\n";
 }
 
+int God::getX(void)
+{
+    return LocationX;
+}
+
+int God::getY(void)
+{
+    return LocationY;
+}
+
 
 
 // Global counters for the members  of each team, initialized to 0.

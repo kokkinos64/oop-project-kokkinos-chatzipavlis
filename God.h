@@ -6,9 +6,14 @@ class God
         /*const*/ int Attack;
         /*const*/ int Defense;
 
+        int LocationX, LocationY;   // Its position on the map
+
     public:
         int getHealth(void);
         int getAttack(void);
         int getDefense(void);
-        God(void);
+        int getX(void);
+        int getY(void);
+        God(void);  // Constructor
+
 };
