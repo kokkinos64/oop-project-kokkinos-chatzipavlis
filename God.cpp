@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 #include "God.h"
 
 using namespace std;
