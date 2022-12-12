@@ -11,6 +11,12 @@ int main(void)
     {
         ch = getchar();
         cout << ch << endl;
+        
+        if (ch == '^[[A')
+        {
+            cout << "UP\n";
+        }
+
     }
 
     return 0;

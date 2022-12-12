@@ -18,6 +18,10 @@ int God::getDefense(void)
     return Defense;
 }
 
+God::God(void)
+{
+    cout << "God's here.\n";
+}
 
 
 

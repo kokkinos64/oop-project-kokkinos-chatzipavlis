@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "God.h"
+#include "Avatar.h"
 #include "Werewolf.h"
 #include "Vampire.h"
 #include "Matrix.h"
@@ -30,11 +31,11 @@ int main(void)
         cin >> team;
     }
 
+    // Objects
+    Avatar a(team); // Create the avatar, pass thru the team selection
+    
 
-
-
-
-
+    Map.MatrixDelete();  // Delete the matrix
     return 0;
 }
 
