@@ -1,0 +1,14 @@
+﻿  Avatar.cpp
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\God.h(4,1): error C2011: 'God': 'class' type redefinition
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\God.h(3,7): message : see declaration of 'God'
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\Avatar.h(4,1): error C2504: 'God': base class undefined
+  client.cpp
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\God.h(4,1): error C2011: 'God': 'class' type redefinition
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\God.h(3,7): message : see declaration of 'God'
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\Avatar.h(4,1): error C2504: 'God': base class undefined
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\Werewolf.h(4,1): error C2504: 'God': base class undefined
+C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\Vampire.h(4,1): error C2504: 'God': base class undefined
+  Map.cpp
+  Matrix.cpp
+  Werewolf.cpp
+  Generating Code...
