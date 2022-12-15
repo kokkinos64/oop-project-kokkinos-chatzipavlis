@@ -53,6 +53,19 @@ void Matrix::MatrixGroundFill(void)
     }
 }
 
+bool Matrix::MatrixInsertAt(int i, int j, char c)
+{
+    if (matrix[i][j] == '*')    // If the selected spot on the matrix is empty
+    {
+        matrix[i][j] = c;       // Insert the given character there
+        return true;            // Success
+    }
+    else
+    {
+        return false;           // Failure
+    }
+}
+
 void Matrix::MatrixInput(void)
 {
     int i, j;
@@ -72,7 +85,7 @@ void Matrix::MatrixPrint(void)
 {
     int i, j;
 
-    cout << "================================\n";
+    cout << "\n================================\n";
 
     for (i = 0; i < rows; i++)
     {
