@@ -98,21 +98,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Avatar.cpp" />
+    <ClCompile Include="Characters.cpp" />
     <ClCompile Include="client.cpp" />
-    <ClCompile Include="God.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Vampire.cpp" />
-    <ClCompile Include="Werewolf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Avatar.h" />
-    <ClInclude Include="God.h" />
+    <ClInclude Include="Characters.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="Vampire.h" />
-    <ClInclude Include="Werewolf.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

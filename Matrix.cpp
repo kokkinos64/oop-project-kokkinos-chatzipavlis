@@ -6,7 +6,7 @@ using namespace std;
 // CONSTRUCTOR CODE
 Matrix::Matrix(int r = 5, int c = 5) : rows(r), cols(c)
 {
-    cout << "Dimentions were set.\n";
+    cout << rows << "x" << cols << " dimentions were set." << endl;
     matrix = MatrixCreate();
 }
 
@@ -40,6 +40,19 @@ char **Matrix::MatrixCreate(void)
     return matrix;
 }
 
+void Matrix::MatrixGroundFill(void)
+{
+    int i, j;
+
+    for (i = 0; i < rows; i++)
+    {
+        for (j = 0; j < cols; j++)
+        {
+            matrix[i][j] = '*';
+        }
+    }
+}
+
 void Matrix::MatrixInput(void)
 {
     int i, j;
@@ -59,17 +72,21 @@ void Matrix::MatrixPrint(void)
 {
     int i, j;
 
+    cout << "================================\n";
+
     for (i = 0; i < rows; i++)
     {
         cout << "matrix[" << i << "]: "; // Print the number of the current row
 
         for (j = 0; j < cols; j++)
         {
-            cout << "\t" << matrix[i][j];
+            cout << " " << matrix[i][j];
         }
 
         cout << endl;
     }
+
+    cout << "================================\n";
 }
 
 void Matrix::MatrixDelete(void)

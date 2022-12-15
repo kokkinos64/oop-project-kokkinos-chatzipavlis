@@ -1,10 +1,8 @@
 // This is the client code to test the game
 
 #include <iostream>
-#include "God.h"
-#include "Avatar.h"
-#include "Werewolf.h"
-#include "Vampire.h"
+#include "Characters.h"
+#include "Map.h"
 #include "Matrix.h"
 
 using namespace std;
@@ -25,15 +23,37 @@ int main(void)
     cout << "Select a side (w,v): ";
     cin >> team;
 
-    while (team != 'w' || team != 'v')
+    // Check for invalid input
+    while ((team != 'w') && (team != 'v'))
     {
         cout << "Invalid input. Usage: w for Werewolves, v for Vampires.\n";
         cin >> team;
     }
+    
+    // In case of valid input,
+    cout << "Your team: ";
+
+    switch (team)
+    {
+    case 'w':
+        cout << "Werewolves";
+        break;
+    case 'v':
+        cout << "Vampires";
+        break;
+    }
+
+    cout << endl;
+
 
     // Objects
     Avatar a(team); // Create the avatar, pass thru the team selection
+
+    Map.MatrixPrint();
     
+    Map.MatrixGroundFill();
+
+    Map.MatrixPrint();
 
     Map.MatrixDelete();  // Delete the matrix
     return 0;

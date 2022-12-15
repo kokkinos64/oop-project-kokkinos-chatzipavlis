@@ -15,5 +15,6 @@ class Matrix
         void MatrixInput(void);
         void MatrixPrint(void);
         void MatrixDelete(void);
+        void MatrixGroundFill(void);
 
 };
