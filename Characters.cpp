@@ -39,7 +39,46 @@ int God::getY(void)
     return LocationY;
 }
 
+void God::MoveUp(void)
+{
+	LocationY--;
+}
+
+void God::MoveDown(void)
+{
+	LocationY++;
+}
+
+void God::MoveLeft(void)
+{
+	LocationX--;
+}
+
+void God::MoveRight(void)
+{
+	LocationX++;
+}
+
 // WEREWOLF MEMBER-FUNCTIONS
+
+void Werewolves::WerewolfMove(int direction)
+{
+	switch (direction)
+	{
+	case(0):		// up
+		MoveUp();
+		break;
+	case(1):		// down
+		MoveDown();
+		break;
+	case(2):		// left
+		MoveLeft();
+		break;
+	case(3):		// right
+		MoveRight();
+		break;
+	}
+}
 
 // VAMPIRE MEMBER-FUNCTIONS
 
@@ -86,3 +125,5 @@ char Avatar::Move(void)
 
 	cout << inputkey << endl;
 }
+
+

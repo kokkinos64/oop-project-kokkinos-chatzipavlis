@@ -11,23 +11,37 @@ private:
     int LocationX, LocationY;   // Its position on the map
 
 public:
+    God(void);  // Constructor
+
+    // Getters
     int getHealth(void);
     int getAttack(void);
     int getDefense(void);
     int getX(void);
     int getY(void);
-    God(void);  // Constructor
+
+    // Move commands
+    void MoveUp(void);
+    void MoveDown(void);
+    void MoveLeft(void);
+    void MoveRight(void);
+
+    void MoveUpperLeft(void);       // Vampires only
+    void MoveUpperRight(void);      // Vampires only
+    void MoveLowerLeft(void);       // Vampires only
+    void MoveLowerRight(void);      // Vampires only
 
 };
 
 class Vampires : public God
 {
-
+    void VampireMove(int direction);
 };
 
 class Werewolves : public God
 {
-
+public:
+    void WerewolfMove(int direction);
 };
 
 class Avatar : public God
