@@ -36,12 +36,14 @@ public:
 class Vampires : public God
 {
     void VampireMove(int direction);
+    int RandomNumber(void);
 };
 
 class Werewolves : public God
 {
 public:
     void WerewolfMove(int direction);
+    int RandomNumber(void);
 };
 
 class Avatar : public God

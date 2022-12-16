@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Characters.h"
-#include <conio.h>
+#include <conio.h>	// For keyboard input
+#include <cstdlib>	// For rand
 
 using namespace std;
 
@@ -80,7 +81,52 @@ void Werewolves::WerewolfMove(int direction)
 	}
 }
 
+int Werewolves::RandomNumber(void)
+{
+	srand((unsigned)time(NULL));	// Seed for rand
+
+	return rand() % 5;	// Range: [0,4]
+}
+
 // VAMPIRE MEMBER-FUNCTIONS
+
+void Vampires::VampireMove(int direction)
+{
+	switch (direction)
+	{
+	case(0):		// up
+		MoveUp();
+		break;
+	case(1):		// down
+		MoveDown();
+		break;
+	case(2):		// left
+		MoveLeft();
+		break;
+	case(3):		// right
+		MoveRight();
+		break;
+	case(4):		// upper left
+		MoveUpperLeft();
+		break;
+	case(5):		// upper right
+		MoveUpperRight();
+		break;
+	case(6):		// lower left
+		MoveLowerLeft();
+		break;
+	case(7):		// lower right
+		MoveLowerRight();
+		break;
+	}
+}
+
+int Vampires::RandomNumber(void)
+{
+	srand((unsigned)time(NULL));	// Seed for rand
+
+	return rand() % 8;	// Range: [0,7]
+}
 
 // AVATAR MEMBER-FUNCTIONS
 
