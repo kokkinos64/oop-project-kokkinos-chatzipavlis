@@ -1,5 +1,7 @@
 #pragma once
 
+class Avatar;
+
 class God
 {
 protected:
@@ -26,7 +28,6 @@ public:
     void MoveLeft(void);
     void MoveRight(void);
 
-    void PauseGame(void);
 };
 
 class Vampires : public God
@@ -49,10 +50,11 @@ public:
 class Avatar : public God
 {
 private:
-    int MagicPot = 1; // Magic pot initialize to 1 at the start of the game
+    int MagicPotCount; 
     char Team_Selection;
 
 public:
     Avatar(char);   // Constructor
     char Move(void);
+    void PauseGame(void);
 };

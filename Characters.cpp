@@ -63,41 +63,6 @@ void God::MoveRight(void)
 	LocationX++;
 }
 
-void God::PauseGame(void)
-{
-	int getch();
-	char input;
-
-	system("cls");  // Clear the screen;
-
-	cout << "GAME PAUSED\n\n";
-	cout << "Vampires alive:\t\t" << VampireCount << endl;
-	cout << "Werewolves alive:\t" << WerewolfCount << endl;
-	cout << "You have " << Meds << " magic potions available in your inventory.\n";
-
-	cout << "\nDO YOU WANT TO CONTINUE? (y/n): ";
-	input = getch();
-
-	// Check for invalid input
-	while (input != 'y' && input != 'n')
-	{
-		cout << "\nInvalid input, try again (y/n): ";
-		input = getch();
-	}
-
-	// In case of valid input
-	if (input == 'y')
-	{
-		return;
-	}
-	else if (input == 'n')
-	{
-		cout << "GAME OVER\n";
-		system("timeout 5");
-		exit(0);
-	}
-}
-
 // WEREWOLF MEMBER-FUNCTIONS
 
 void Werewolves::WerewolfMove(void)
@@ -203,6 +168,8 @@ Avatar::Avatar(char t) : Team_Selection(t)
 	}
 
 	cout << endl;
+
+	MagicPotCount = 1;	// Magic pot initialized to 1 at the start of each game
 }
 
 char Avatar::Move(void)
@@ -241,4 +208,37 @@ char Avatar::Move(void)
 	cout << inputkey << endl;
 }
 
+void Avatar::PauseGame(void)
+{
+	int getch();
+	char input;
 
+	system("cls");  // Clear the screen;
+
+	cout << "GAME PAUSED\n\n";
+	cout << "Vampires alive:\t\t" << VampireCount << endl;
+	cout << "Werewolves alive:\t" << WerewolfCount << endl;
+	cout << "You have " << MagicPotCount << " magic potions available in your inventory.\n";
+
+	cout << "\nDO YOU WANT TO CONTINUE? (y/n): ";
+	input = getch();
+
+	// Check for invalid input
+	while (input != 'y' && input != 'n')
+	{
+		cout << "\nInvalid input, try again (y/n): ";
+		input = getch();
+	}
+
+	// In case of valid input
+	if (input == 'y')
+	{
+		return;
+	}
+	else if (input == 'n')
+	{
+		cout << "GAME OVER\n";
+		system("timeout 5");
+		exit(0);
+	}
+}
