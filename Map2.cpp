@@ -93,7 +93,7 @@ void Map::PrintMap(void)
 
 	system("cls");	// Reset terminal
 
-	cout << "Tip: You can press (p) to pause the game at any time.\n\n";
+	cout << "Tip: You can press (p) to pause the game at any time.\n" << "Tip: While in-game, you can quit the game on the fly by pressing (q)\n\n";
 
 	for (i = 0; i < Rows; i++)
 	{

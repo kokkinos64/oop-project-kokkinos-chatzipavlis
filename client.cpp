@@ -44,5 +44,7 @@ int main(void)
 		M.PrintMap();
 	}
 
+	cout << "QUIT\n";
+	system("timeout 2");
 	return 0;
 }
