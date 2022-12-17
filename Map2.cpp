@@ -50,8 +50,8 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 	}
 
 	// Place the magic potion at a random position (represented as a '&')
-	MagicPotX = rand() % Rows + 1;	// Range: [0,Rows]
-	MagicPotY = rand() % Cols + 1;	// Range: [0, Cols]
+	MagicPotX = rand() % Rows;	// Range: [0,Rows]
+	MagicPotY = rand() % Cols;	// Range: [0, Cols]
 	Matrix[MagicPotX][MagicPotY] = '&';
 	isMagicPotPlaced = true;
 }
@@ -69,7 +69,7 @@ void Map::PrintMap(void)
 
 	int i, j;
 
-	cout << "\033[2J\033[1;5H"; // Reset terminal
+	system("cls");	// Reset terminal
 
 	for (i = 0; i < Rows; i++)
 	{
