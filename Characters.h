@@ -2,7 +2,7 @@
 
 class God
 {
-private:
+protected:
     int Health = 10;
     int Meds;
     /*const*/ int Attack;
@@ -26,17 +26,18 @@ public:
     void MoveLeft(void);
     void MoveRight(void);
 
-    void MoveUpperLeft(void);       // Vampires only
-    void MoveUpperRight(void);      // Vampires only
-    void MoveLowerLeft(void);       // Vampires only
-    void MoveLowerRight(void);      // Vampires only
-
 };
 
 class Vampires : public God
 {
+public:
     void VampireMove(int direction);
     int RandomNumber(void);
+
+    void MoveUpperLeft(void);       // Vampires only
+    void MoveUpperRight(void);      // Vampires only
+    void MoveLowerLeft(void);       // Vampires only
+    void MoveLowerRight(void);      // Vampires only
 };
 
 class Werewolves : public God

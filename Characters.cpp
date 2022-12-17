@@ -121,6 +121,30 @@ void Vampires::VampireMove(int direction)
 	}
 }
 
+void Vampires::MoveUpperLeft(void)
+{
+	LocationX--;
+	LocationY--;
+}
+
+void Vampires::MoveUpperRight(void)
+{
+	LocationX++;
+	LocationY--;
+}
+
+void Vampires::MoveLowerLeft(void)
+{
+	LocationX--;
+	LocationY++;
+}
+
+void Vampires::MoveLowerRight(void)
+{
+	LocationX++;
+	LocationY++;
+}
+
 int Vampires::RandomNumber(void)
 {
 	srand((unsigned)time(NULL));	// Seed for rand
