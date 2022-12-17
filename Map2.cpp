@@ -93,6 +93,8 @@ void Map::PrintMap(void)
 
 	system("cls");	// Reset terminal
 
+	cout << "Tip: You can press (p) to pause the game at any time.\n\n";
+
 	for (i = 0; i < Rows; i++)
 	{
 		cout << "matrix[" << i << "]: "; // Print the number of the current row

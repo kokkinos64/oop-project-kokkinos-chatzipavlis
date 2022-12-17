@@ -70,18 +70,27 @@ void God::PauseGame(void)
 
 	system("cls");  // Clear the screen;
 
-	cout << "GAME PAUSED" << endl;
-	cout << "Vampires alive: " << VampireCount << endl;
-	cout << "Werewolves alive: " << WerewolfCount << endl;
-	cout << "You have " << Meds << " magic potions in your inventory.\n";
+	cout << "GAME PAUSED\n\n";
+	cout << "Vampires alive:\t\t" << VampireCount << endl;
+	cout << "Werewolves alive:\t" << WerewolfCount << endl;
+	cout << "You have " << Meds << " magic potions available in your inventory.\n";
 
-	cout << "DO YOU WANT TO CONTINUE? (y/n): ";
+	cout << "\nDO YOU WANT TO CONTINUE? (y/n): ";
 	input = getch();
+
+	// Check for invalid input
+	while (input != 'y' && input != 'n')
+	{
+		cout << "\nInvalid input, try again (y/n): ";
+		input = getch();
+	}
+
+	// In case of valid input
 	if (input == 'y')
 	{
 		return;
 	}
-	else
+	else if (input == 'n')
 	{
 		cout << "GAME OVER\n";
 		system("timeout 5");
