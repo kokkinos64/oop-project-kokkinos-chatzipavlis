@@ -54,6 +54,19 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 	MagicPotY = rand() % Cols;	// Range: [0, Cols]
 	Matrix[MagicPotX][MagicPotY] = '&';
 	isMagicPotPlaced = true;
+
+	// Place lakes
+	for (i = 0; i < rand() % (Rows * Cols) / 10; i++)
+	{
+		InsertAt(rand() % Rows, rand() % Cols, '~');
+	}
+
+	// Place trees
+	for (i = 0; i < rand() % (Rows * Cols) / 10; i++)
+	{
+		InsertAt(rand() % Rows, rand() % Cols, '#');
+	}
+
 }
 
 void Map::InsertAt(int i, int j, char c)
