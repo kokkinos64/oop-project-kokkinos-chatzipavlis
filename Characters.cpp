@@ -1,7 +1,10 @@
 #include <iostream>
-#include "Characters.h"
 #include <conio.h>	// For keyboard input
 #include <cstdlib>	// For rand
+
+#include "Characters.h"
+#include "Map.h"
+
 
 using namespace std;
 
@@ -85,7 +88,7 @@ int Werewolves::RandomNumber(void)
 {
 	srand((unsigned)time(NULL));	// Seed for rand
 
-	return rand() % 5;	// Range: [0,4]
+	return (int)rand() % 5;	// Range: [0,4]
 }
 
 // VAMPIRE MEMBER-FUNCTIONS
@@ -149,7 +152,7 @@ int Vampires::RandomNumber(void)
 {
 	srand((unsigned)time(NULL));	// Seed for rand
 
-	return rand() % 8;	// Range: [0,7]
+	return (int)rand() % 8;	// Range: [0,7]
 }
 
 // AVATAR MEMBER-FUNCTIONS
