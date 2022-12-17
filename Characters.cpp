@@ -63,6 +63,32 @@ void God::MoveRight(void)
 	LocationX++;
 }
 
+void God::PauseGame(void)
+{
+	int getch();
+	char input;
+
+	system("cls");  // Clear the screen;
+
+	cout << "GAME PAUSED" << endl;
+	cout << "Vampires alive: " << VampireCount << endl;
+	cout << "Werewolves alive: " << WerewolfCount << endl;
+	cout << "You have " << Meds << " magic potions in your inventory.\n";
+
+	cout << "DO YOU WANT TO CONTINUE? (y/n): ";
+	input = getch();
+	if (input == 'y')
+	{
+		return;
+	}
+	else
+	{
+		cout << "GAME OVER\n";
+		system("timeout 5");
+		exit(0);
+	}
+}
+
 // WEREWOLF MEMBER-FUNCTIONS
 
 void Werewolves::WerewolfMove(void)
@@ -177,35 +203,30 @@ char Avatar::Move(void)
 
 	inputkey = getch();
 
-	while (inputkey != 'p')
+	switch (inputkey)
 	{
-		switch (inputkey)
-		{
-		case(72):
-			cout << "UP\n";
-			return 'u';
-			break;
+	case(72):
+		cout << "UP\n";
+		return 'u';
+		break;
 
-		case(80):
-			cout << "DOWN\n";
-			return 'd';
-			break;
+	case(80):
+		cout << "DOWN\n";
+		return 'd';
+		break;
 
-		case(75):
-			cout << "LEFT\n";
-			return 'l';
-			break;
+	case(75):
+		cout << "LEFT\n";
+		return 'l';
+		break;
 
-		case(77):
-			cout << "RIGHT\n";
-			return 'r';
-			break;
-		default:
-			return inputkey;
-			break;
-		}
-
-		inputkey = getch();
+	case(77):
+		cout << "RIGHT\n";
+		return 'r';
+		break;
+	default:
+		return inputkey;
+		break;
 	}
 
 	cout << inputkey << endl;

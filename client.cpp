@@ -7,7 +7,7 @@ using namespace std;
 int main(void)
 {
 	int x, y;
-	char team;
+	char team, input;
 
 	// Create the map
 	cout << "Enter map dimentions (x y): ";
@@ -33,8 +33,14 @@ int main(void)
 	
 	system("timeout 5");
 
-	while (A.Move() != 'p')
+	while ((input = A.Move()) != 'q')
 	{
+		// PAUSE
+		if (input == 'p')
+		{
+			A.PauseGame();
+		}
+
 		M.PrintMap();
 	}
 

@@ -26,6 +26,7 @@ public:
     void MoveLeft(void);
     void MoveRight(void);
 
+    void PauseGame(void);
 };
 
 class Vampires : public God
