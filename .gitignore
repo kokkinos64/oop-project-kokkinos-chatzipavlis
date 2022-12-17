@@ -33,4 +33,10 @@
 
 # VS FOLDER
 .vs/
-x64/
+*.recipe
+*.ilk
+*.log
+*.idb
+*.pdb
+*.tlog
+

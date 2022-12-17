@@ -3,7 +3,7 @@
 #include <cstdlib>	// For rand
 
 #include "Characters.h"
-#include "Map.h"
+#include "Map2.h"
 
 
 using namespace std;
