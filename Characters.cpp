@@ -157,10 +157,23 @@ int Vampires::RandomNumber(void)
 
 // AVATAR MEMBER-FUNCTIONS
 
+// Constructor
 Avatar::Avatar(char t) : Team_Selection(t)
 {
 	// Team_Selection = t;
-	cout << "Avatar created.\n";
+	cout << "Avatar created.\n" << "Your team: ";
+
+	switch (t)
+	{
+	case 'w':
+		cout << "Werewolves";
+		break;
+	case 'v':
+		cout << "Vampires";
+		break;
+	}
+
+	cout << endl;
 }
 
 char Avatar::Move(void)

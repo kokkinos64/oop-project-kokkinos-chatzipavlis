@@ -20,7 +20,7 @@ public:
     int getX(void);
     int getY(void);
 
-    // Move commands
+    // Move commands (for everyone)
     void MoveUp(void);
     void MoveDown(void);
     void MoveLeft(void);
