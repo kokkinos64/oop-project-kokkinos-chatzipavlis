@@ -26,7 +26,8 @@ int main(void)
 
 	Avatar A(team);
 
-
+	// Starting the game
+	M.PrintMap();
 
 	return 0;
 }
