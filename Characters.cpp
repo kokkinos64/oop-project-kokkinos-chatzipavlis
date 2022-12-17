@@ -177,27 +177,32 @@ char Avatar::Move(void)
 
 	inputkey = getch();
 
-	while (inputkey != '0')
+	while (inputkey != 'p')
 	{
-		if (inputkey == 72)
+		switch (inputkey)
 		{
+		case(72):
 			cout << "UP\n";
 			return 'u';
-		}
-		else if (inputkey == 80)
-		{
+			break;
+
+		case(80):
 			cout << "DOWN\n";
 			return 'd';
-		}
-		else if (inputkey == 75)
-		{
+			break;
+
+		case(75):
 			cout << "LEFT\n";
 			return 'l';
-		}
-		else if (inputkey == 77)
-		{
+			break;
+
+		case(77):
 			cout << "RIGHT\n";
 			return 'r';
+			break;
+		default:
+			return inputkey;
+			break;
 		}
 
 		inputkey = getch();

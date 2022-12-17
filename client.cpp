@@ -33,5 +33,10 @@ int main(void)
 	
 	system("timeout 5");
 
+	while (A.Move() != 'p')
+	{
+		M.PrintMap();
+	}
+
 	return 0;
 }
