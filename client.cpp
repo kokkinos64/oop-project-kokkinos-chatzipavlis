@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstdlib>
+
 #include "Characters.h"
 #include "Map.h"
 #include "Matrix.h"
@@ -16,10 +17,10 @@ int main(void)
     int x, y;
     char team;
 
-    // INPUT: MAP DIMENTIONS
-    cout << "Enter the map dimentions: ";
+    // INPUT: Board DIMENTIONS
+    cout << "Enter the Board dimentions: ";
     cin >> x >> y;
-    Matrix Map(x,y);    // Create the matrix
+    Matrix Board(x,y);    // Create the matrix
     
     // INPUT: TEAM SELECTION
     cout << "Select a side (w,v): ";
@@ -51,15 +52,15 @@ int main(void)
     // Objects
     Avatar a(team); // Create the avatar, pass thru the team selection
     
-    Map.MatrixGroundFill();
+    Board.MatrixGroundFill();
 
-    Map.MatrixPrint();
+    Board.MatrixPrint();
 
-    Map.MatrixInsertAt(5, 5, 'x');
+    Board.MatrixInsertAt(5, 5, 'x');
 
-    Map.MatrixPrint();
+    Board.MatrixPrint();
 
-    Map.MatrixDelete();  // Delete the matrix
+    Board.MatrixDelete();  // Delete the matrix
     return 0;
 }
 
