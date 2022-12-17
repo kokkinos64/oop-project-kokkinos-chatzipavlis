@@ -11,6 +11,7 @@ private:
 public:
 	Map(int, int);
 	void InsertAt(int, int, char);
+	void RemoveFrom(int, int);
 	void PrintMap(void);
 	~Map(void);
 };

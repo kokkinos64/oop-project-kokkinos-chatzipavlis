@@ -77,6 +77,15 @@ void Map::InsertAt(int i, int j, char c)
 	}
 }
 
+void Map::RemoveFrom(int i, int j)
+{
+	if (Matrix[i][j] != '*')    // If the selected spot on the matrix is NOT ground
+	{
+		Matrix[i][j] = '*';		// Replace it with ground
+	}
+}
+
+
 void Map::PrintMap(void)
 {
 
