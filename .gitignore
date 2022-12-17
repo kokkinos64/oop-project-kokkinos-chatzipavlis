@@ -39,4 +39,6 @@
 *.idb
 *.pdb
 *.tlog
+*.vcxproj
+*.sln
 

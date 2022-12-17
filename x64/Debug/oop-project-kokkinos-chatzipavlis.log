@@ -1,7 +1,1 @@
-﻿  Characters.cpp
-  Map.cpp
-  Matrix.cpp
-  client.cpp
-  Generating Code...
-C:\Users\User\source\repos\oop-project-kokkinos-chatzipavlis\Characters.cpp(200): warning C4715: 'Avatar::Move': not all control paths return a value
-  oop-project-kokkinos-chatzipavlis.vcxproj -> C:\Users\User\source\repos\oop-project-kokkinos-chatzipavlis\x64\Debug\oop-project-kokkinos-chatzipavlis.exe
+﻿  oop-project-kokkinos-chatzipavlis.vcxproj -> C:\Users\vagge\Source\Repos\oop-project-kokkinos-chatzipavlis\x64\Debug\oop-project-kokkinos-chatzipavlis.exe

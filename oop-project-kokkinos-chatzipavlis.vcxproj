@@ -100,13 +100,11 @@
   <ItemGroup>
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="client.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Map2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Characters.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Map2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
