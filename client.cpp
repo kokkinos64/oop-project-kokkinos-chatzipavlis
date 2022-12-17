@@ -31,7 +31,7 @@ int main(void)
 	// Starting the game
 	M.PrintMap();
 	
-	system("timeout 3");
+	system("timeout 5");
 
 	return 0;
 }

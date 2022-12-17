@@ -90,7 +90,33 @@ void Map::PrintMap(void)
 
 		for (j = 0; j < Cols; j++)
 		{
-			cout << " " << Matrix[i][j];
+			// Text coloring
+			switch (Matrix[i][j])
+			{
+			case('#'):
+				cout << "\033[0;32m";	// Green
+				break;
+			case('~'):
+				cout << "\033[0;36m";	// Blue
+				break;
+			case('w'):
+				cout << "\033[0;35m";	// Purple
+				break;
+			case('v'):
+				cout << "\033[0;31m";	// Red
+				break;
+			case('A'):
+				cout << "\033[0;34m";	// Blue
+				break;
+			case('&'):
+				cout << "\033[0;33m";	// Yellow
+				break;
+			default:
+				cout << "\033[0;37m";	// White
+				break;
+			}
+
+			cout << " " << Matrix[i][j] << "\033[0m";	// Print out the character and reset terminal back to default colors
 		}
 
 		cout << endl;
