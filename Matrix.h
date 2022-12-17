@@ -1,5 +1,7 @@
 // This is Matrix.h
 
+#pragma once
+
 class Matrix
 {
     private:

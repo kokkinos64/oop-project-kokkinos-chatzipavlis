@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Matrix.h"
+#include "Map.h"
+#include "Characters.h"
 
 using namespace std;
 
 // CONSTRUCTOR CODE
-Matrix::Matrix(int r = 5, int c = 5) : rows(r), cols(c)
+Matrix::Matrix(int r = 5, int c = 5) : rows(r), cols(c)     // Default matrix dimentions: 5x5
 {
     cout << rows << "x" << cols << " dimentions were set." << endl;
     matrix = MatrixCreate();
