@@ -1,6 +1,8 @@
 // This is Map.h
 
-class MapObject
+#include "Matrix.h"
+
+class Map
 {
 private:
 	bool isNight;
@@ -8,4 +10,5 @@ private:
 public:
 	bool getNighttime(void);
 	void setNight(bool);
+	//void PlaceMagicPot(Matrix&, int, int);
 };
