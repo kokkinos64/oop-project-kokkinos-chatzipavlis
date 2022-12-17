@@ -25,9 +25,13 @@ int main(void)
 	}
 
 	Avatar A(team);
+	
+	system("timeout 3");
 
 	// Starting the game
 	M.PrintMap();
+	
+	system("timeout 3");
 
 	return 0;
 }
