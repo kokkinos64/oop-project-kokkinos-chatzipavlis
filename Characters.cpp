@@ -65,8 +65,12 @@ void God::MoveRight(void)
 
 // WEREWOLF MEMBER-FUNCTIONS
 
-void Werewolves::WerewolfMove(int direction)
+void Werewolves::WerewolfMove(void)
 {
+	srand((unsigned)time(NULL));	// Seed for rand
+
+	int direction = rand() % 5;		// Range: [0,4]
+
 	switch (direction)
 	{
 	case(0):		// up
@@ -84,17 +88,14 @@ void Werewolves::WerewolfMove(int direction)
 	}
 }
 
-int Werewolves::RandomNumber(void)
+// VAMPIRE MEMBER-FUNCTIONS
+
+void Vampires::VampireMove(void)
 {
 	srand((unsigned)time(NULL));	// Seed for rand
 
-	return (int)rand() % 5;	// Range: [0,4]
-}
+	int direction = rand() % 8;		// Range: [0,7]
 
-// VAMPIRE MEMBER-FUNCTIONS
-
-void Vampires::VampireMove(int direction)
-{
 	switch (direction)
 	{
 	case(0):		// up
@@ -146,13 +147,6 @@ void Vampires::MoveLowerRight(void)
 {
 	LocationX++;
 	LocationY++;
-}
-
-int Vampires::RandomNumber(void)
-{
-	srand((unsigned)time(NULL));	// Seed for rand
-
-	return (int)rand() % 8;	// Range: [0,7]
 }
 
 // AVATAR MEMBER-FUNCTIONS

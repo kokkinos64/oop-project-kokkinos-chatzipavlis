@@ -31,8 +31,7 @@ public:
 class Vampires : public God
 {
 public:
-    void VampireMove(int direction);
-    int RandomNumber(void);
+    void VampireMove(void);
 
     void MoveUpperLeft(void);       // Vampires only
     void MoveUpperRight(void);      // Vampires only
@@ -43,8 +42,7 @@ public:
 class Werewolves : public God
 {
 public:
-    void WerewolfMove(int direction);
-    int RandomNumber(void);
+    void WerewolfMove(void);
 };
 
 class Avatar : public God
