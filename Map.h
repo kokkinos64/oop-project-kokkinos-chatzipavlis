@@ -10,5 +10,5 @@ private:
 public:
 	bool getNighttime(void);
 	void setNight(bool);
-	//void PlaceMagicPot(Matrix&, int, int);
+	void PlaceMagicPot(Matrix&, int, int);
 };
