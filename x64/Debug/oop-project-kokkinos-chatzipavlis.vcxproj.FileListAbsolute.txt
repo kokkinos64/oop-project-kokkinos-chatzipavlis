@@ -1,2 +1,0 @@
-C:\Users\vagge\source\repos\oop-project-kokkinos-chatzipavlis\x64\Debug\oop-project-kokkinos-chatzipavlis.exe
-C:\Users\User\source\repos\oop-project-kokkinos-chatzipavlis\x64\Debug\oop-project-kokkinos-chatzipavlis.exe
