@@ -69,47 +69,87 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 
 }
 
-void Map::InsertAt(int i, int j, char c)
+bool Map::InsertAt(int i, int j, char c)
 {
 	if ((i < Rows) || (j < Cols))	// Check if we are within matrix borders
-	{
-		if (Matrix[i][j] == '*')    // If the selected spot on the matrix is just ground
+	{	
+		// FOR AVATAR ONLY
+		if (c == 'A' && Matrix[i][j] == '&')	// If the Avatar steps onto the Magic Pot
 		{
-			Matrix[i][j] = c;       // Insert the given character there
+			Matrix[i][j] = c;					// Step onto it
 		}
-		else if (Matrix[i][j] == '~' || Matrix[i][j] == '#' || Matrix[i][j] == 'W' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A')	// Check if something else is already there
+
+		if (c == 'A' && Matrix[i][j] == '*')
 		{
-			return;	// entity stalls for this move
+			Matrix[i][j] = c;					// Step onto it
 		}
+		
+		// FOR EVERYONE
+		if (Matrix[i][j] == '#' || Matrix[i][j] == '~')
+		{
+			return false;
+		}
+
+		// FOR WEREWOLF
+		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V'))
+		{
+			return false;
+		}
+
+		// FOR VAMPIRE
+		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W'))
+		{
+			return false;
+		}
+
+		if (c == '#' || c == '~')
+		{
+			Matrix[i][j] = c;
+		}
+
+		//if (Matrix[i][j] == '*')    // If the selected spot on the matrix is just ground
+		//{
+		//	Matrix[i][j] = c;       // Insert the given character there
+		//}
+		//else if (Matrix[i][j] == '~' || Matrix[i][j] == '#' || Matrix[i][j] == 'W' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A')	// Check if something else is already there
+		//{
+		//	return false;	// entity stalls for this move
+		//}
 	}
 	else
 	{
-		return;	// We are out of matrix borders, entity stalls for this move
+		return false;	// We are out of matrix borders, entity stalls for this move
 	}
 	
 }
 
 void Map::RemoveFrom(int i, int j)
 {
-	if ((i < Rows) || (j < Cols))	// Check if we are within matrix borders
+	if (Matrix[i][j] != '*' && Matrix[i][j] != '#' && Matrix[i][j] != '~')	// If requested spot is not empty
 	{
-		if (Matrix[i][j] == '~' || Matrix[i][j] == '#' || Matrix[i][j] == 'W' || Matrix[i][j] == 'V' /*|| Matrix[i][j] == 'A'*/)	// Check if something else is already there
-		{
-			return;	// entity stalls for this move
-		}
-		else if (Matrix[i][j] == 'A')
-		{
-			Matrix[i][j] = '*';		// Replace it with ground
-		}
-		else //if (Matrix[i][j] != '*')    // If the selected spot on the matrix is NOT ground
-		{
-			Matrix[i][j] = '*';		// Replace it with ground
-		}
+		Matrix[i][j] = '*';		// Make it empty
 	}
-	else
-	{
-		return;
-	}
+
+
+	//if ((i < Rows) || (j < Cols))	// Check if we are within matrix borders
+	//{
+	//	if (Matrix[i][j] == '~' || Matrix[i][j] == '#' || Matrix[i][j] == 'W' || Matrix[i][j] == 'V' /*|| Matrix[i][j] == 'A'*/)	// Check if something else is already there
+	//	{
+	//		return;	// entity stalls for this move
+	//	}
+	//	else if (Matrix[i][j] == 'A')
+	//	{
+	//		Matrix[i][j] = '*';		// Replace it with ground
+	//	}
+	//	else //if (Matrix[i][j] != '*')    // If the selected spot on the matrix is NOT ground
+	//	{
+	//		Matrix[i][j] = '*';		// Replace it with ground
+	//	}
+	//}
+	//else
+	//{
+	//	return;
+	//}
 }
 
 
