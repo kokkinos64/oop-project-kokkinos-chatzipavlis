@@ -200,7 +200,7 @@ char Avatar::Move(void)
 	{
 	case(72):
 		cout << "UP\n";
-		return 'u';
+		MoveUp();
 		break;
 
 	case(80):
