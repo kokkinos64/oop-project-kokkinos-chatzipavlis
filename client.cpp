@@ -25,6 +25,8 @@ int main(void)
 	}
 
 	Avatar A(team,&M);
+	Werewolves W1(&M);
+
 	
 	system("timeout 3");
 
@@ -39,6 +41,7 @@ int main(void)
 			A.PauseGame();
 		}
 
+		W1.WerewolfMove();
 		M.PrintMap();
 	}
 

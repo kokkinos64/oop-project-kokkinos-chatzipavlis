@@ -46,6 +46,7 @@ public:
 class Werewolves : public God
 {
 public:
+    Werewolves(Map*);
     void WerewolfMove(void);
 };
 

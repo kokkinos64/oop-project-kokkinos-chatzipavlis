@@ -73,6 +73,19 @@ void God::MoveRight(char c)
 
 // WEREWOLF MEMBER-FUNCTIONS
 
+Werewolves::Werewolves(Map *m)
+{
+	srand((unsigned)time(NULL));	// Seed for rand
+
+	// Map address
+	mp = m;				// Pass through the address of map
+
+	LocationX = rand() % m->getRows();		// Range: [0,Rows]
+	LocationY = rand() % m->getCols();		// Range: [0,Cols]
+	m->InsertAt(LocationX, LocationY, 'W');
+
+}
+
 void Werewolves::WerewolfMove(void)
 {
 	srand((unsigned)time(NULL));	// Seed for rand
