@@ -56,13 +56,13 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 	isMagicPotPlaced = true;
 
 	// Place lakes
-	for (i = 0; i < rand() % (Rows * Cols) / 10; i++)
+	for (i = 0; i < rand() % ((Rows * Cols) / 10) + 1; i++)
 	{
 		InsertAt(rand() % Rows, rand() % Cols, '~');
 	}
 
 	// Place trees
-	for (i = 0; i < rand() % (Rows * Cols) / 10; i++)
+	for (i = 0; i < rand() % ((Rows * Cols) / 10) + 1; i++)
 	{
 		InsertAt(rand() % Rows, rand() % Cols, '#');
 	}
@@ -71,17 +71,44 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 
 void Map::InsertAt(int i, int j, char c)
 {
-	if (Matrix[i][j] == '*')    // If the selected spot on the matrix is just ground
+	if ((i < Rows) || (j < Cols))	// Check if we are within matrix borders
 	{
-		Matrix[i][j] = c;       // Insert the given character there
+		if (Matrix[i][j] == '*')    // If the selected spot on the matrix is just ground
+		{
+			Matrix[i][j] = c;       // Insert the given character there
+		}
+		else if (Matrix[i][j] == '~' || Matrix[i][j] == '#' || Matrix[i][j] == 'W' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A')	// Check if something else is already there
+		{
+			return;	// entity stalls for this move
+		}
 	}
+	else
+	{
+		return;	// We are out of matrix borders, entity stalls for this move
+	}
+	
 }
 
 void Map::RemoveFrom(int i, int j)
 {
-	if (Matrix[i][j] != '*')    // If the selected spot on the matrix is NOT ground
+	if ((i < Rows) || (j < Cols))	// Check if we are within matrix borders
 	{
-		Matrix[i][j] = '*';		// Replace it with ground
+		if (Matrix[i][j] == '~' || Matrix[i][j] == '#' || Matrix[i][j] == 'W' || Matrix[i][j] == 'V' /*|| Matrix[i][j] == 'A'*/)	// Check if something else is already there
+		{
+			return;	// entity stalls for this move
+		}
+		else if (Matrix[i][j] == 'A')
+		{
+			Matrix[i][j] = '*';		// Replace it with ground
+		}
+		else //if (Matrix[i][j] != '*')    // If the selected spot on the matrix is NOT ground
+		{
+			Matrix[i][j] = '*';		// Replace it with ground
+		}
+	}
+	else
+	{
+		return;
 	}
 }
 
