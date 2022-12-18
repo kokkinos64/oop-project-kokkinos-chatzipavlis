@@ -45,30 +45,30 @@ int God::getY(void)
 
 void God::MoveUp(void)
 {
-	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationX--;
-	mp->InsertAt(LocationX, LocationY, 'A');
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationX--;								// Change location
+	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
 }
 
 void God::MoveDown(void)
 {
-	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationX++;
-	mp->InsertAt(LocationX, LocationY, 'A');
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationX++;								// Change location
+	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
 }
 
 void God::MoveLeft(void)
 {
-	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationY--;
-	mp->InsertAt(LocationX, LocationY, 'A');
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationY--;								// Change location
+	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
 }
 
 void God::MoveRight(void)
 {
-	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationY++;
-	mp->InsertAt(LocationX, LocationY, 'A');
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationY++;								// Change location
+	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
 }
 
 // WEREWOLF MEMBER-FUNCTIONS
