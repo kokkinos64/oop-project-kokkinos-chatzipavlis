@@ -13,6 +13,7 @@ int main(void)
 	cout << "Enter map dimentions (x y): ";
 	cin >> x >> y;
 	Map M(x, y);
+	M.PrintMap();
 
 	// Team selection
 	cout << "Select your team (w, v): ";
@@ -25,8 +26,8 @@ int main(void)
 	}
 
 	Avatar A(team,&M);
-	/*Werewolves W1(&M);
-	Vampires V1(&M);*/
+	//Werewolves W1(&M);
+	//Vampires V1(&M);
 	
 	system("timeout 3");
 
@@ -41,8 +42,8 @@ int main(void)
 			A.PauseGame();
 		}
 
-		/*W1.WerewolfMove();
-		V1.VampireMove();*/
+		//W1.WerewolfMove();
+		//V1.VampireMove();
 		M.PrintMap();
 	}
 

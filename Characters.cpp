@@ -45,34 +45,74 @@ int God::getY(void)
 
 void God::MoveUp(char c)
 {	
+	bool s = true;
+
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX--;	// Change location
-	mp->InsertAt(LocationX, LocationY, c);
-	mp->PrintMap();
+	s = mp->InsertAt(LocationX, LocationY, c);
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX++;
+		mp->InsertAt(LocationX, LocationY, c);
+	}
+
+	//mp->PrintMap();
 }
 
 void God::MoveDown(char c)
 {
+	bool s = true;
+
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX++;								// Change location
-	mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
-	mp->PrintMap();
+	s = mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
+	
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX--;
+		mp->InsertAt(LocationX, LocationY, c);
+	}
+	
+	//mp->PrintMap();
 }
 
 void God::MoveLeft(char c)
 {
+	bool s = true;
+
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationY--;								// Change location
-	mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
-	mp->PrintMap();
+	s = mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
+	
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationY++;
+		mp->InsertAt(LocationX, LocationY, c);
+	}
+	
+	//mp->PrintMap();
 }
 
 void God::MoveRight(char c)
 {
+	bool s = true;
+
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationY++;								// Change location
-	mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
-	mp->PrintMap();
+	s = mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
+	
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationY--;
+		mp->InsertAt(LocationX, LocationY, c);
+	}
+	
+	//mp->PrintMap();
 }
 
 // WEREWOLF MEMBER-FUNCTIONS
@@ -95,7 +135,7 @@ void Werewolves::WerewolfMove(void)
 {
 	srand((unsigned)time(NULL));	// Seed for rand
 
-	int direction = rand() % 5;		// Range: [0,4]
+	int direction = rand() % 4;		// Range: [0,3]
 
 	switch (direction)
 	{

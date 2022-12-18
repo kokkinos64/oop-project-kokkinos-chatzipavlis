@@ -77,11 +77,13 @@ bool Map::InsertAt(int i, int j, char c)
 		if (c == 'A' && Matrix[i][j] == '&')	// If the Avatar steps onto the Magic Pot
 		{
 			Matrix[i][j] = c;					// Step onto it
+			return true;
 		}
 
 		if (c == 'A' && Matrix[i][j] == '*')
 		{
 			Matrix[i][j] = c;					// Step onto it
+			return true;
 		}
 		
 		// FOR EVERYONE
@@ -91,13 +93,13 @@ bool Map::InsertAt(int i, int j, char c)
 		}
 
 		// FOR WEREWOLF
-		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V'))
+		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V')/* || Matrix[i][j] == 'A'*/)	// Do not cross over anything
 		{
 			return false;
 		}
 
 		// FOR VAMPIRE
-		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W'))
+		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W')/* || Matrix[i][j] == 'A'*/)
 		{
 			return false;
 		}
@@ -105,6 +107,13 @@ bool Map::InsertAt(int i, int j, char c)
 		if (c == '#' || c == '~')
 		{
 			Matrix[i][j] = c;
+			return true;
+		}
+
+		if (c == 'W' && c == '*')
+		{
+			Matrix[i][j] = c;
+			return true;
 		}
 
 		//if (Matrix[i][j] == '*')    // If the selected spot on the matrix is just ground
