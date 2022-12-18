@@ -110,10 +110,10 @@ void Map::PrintMap(void)
 			case('~'):
 				cout << "\033[0;36m";	// Blue
 				break;
-			case('w'):
+			case('W'):
 				cout << "\033[0;35m";	// Purple
 				break;
-			case('v'):
+			case('V'):
 				cout << "\033[0;31m";	// Red
 				break;
 			case('A'):
@@ -133,6 +133,16 @@ void Map::PrintMap(void)
 		cout << endl;
 	}
 	cout << endl;
+}
+
+int Map::getRows(void)
+{
+	return Rows;
+}
+
+int Map::getCols(void)
+{
+	return Cols;
 }
 
 // Destructor

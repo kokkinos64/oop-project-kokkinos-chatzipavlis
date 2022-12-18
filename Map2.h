@@ -13,5 +13,7 @@ public:
 	void InsertAt(int, int, char);
 	void RemoveFrom(int, int);
 	void PrintMap(void);
+	int getRows(void);
+	int getCols(void);
 	~Map(void);
 };
