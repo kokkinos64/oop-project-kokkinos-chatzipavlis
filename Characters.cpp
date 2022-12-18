@@ -43,32 +43,32 @@ int God::getY(void)
     return LocationY;
 }
 
-void God::MoveUp(void)
+void God::MoveUp(char c)
 {
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX--;								// Change location
-	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
+	mp->InsertAt(LocationX, LocationY, c);	// Place the character at the new spot
 }
 
-void God::MoveDown(void)
+void God::MoveDown(char c)
 {
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX++;								// Change location
-	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
+	mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
 }
 
-void God::MoveLeft(void)
+void God::MoveLeft(char c)
 {
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationY--;								// Change location
-	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
+	mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
 }
 
-void God::MoveRight(void)
+void God::MoveRight(char c)
 {
 	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationY++;								// Change location
-	mp->InsertAt(LocationX, LocationY, 'A');	// Place the character at the new spot
+	mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
 }
 
 // WEREWOLF MEMBER-FUNCTIONS
@@ -82,16 +82,16 @@ void Werewolves::WerewolfMove(void)
 	switch (direction)
 	{
 	case(0):		// up
-		MoveUp();
+		MoveUp('W');
 		break;
 	case(1):		// down
-		MoveDown();
+		MoveDown('W');
 		break;
 	case(2):		// left
-		MoveLeft();
+		MoveLeft('W');
 		break;
 	case(3):		// right
-		MoveRight();
+		MoveRight('W');
 		break;
 	}
 }
@@ -107,16 +107,16 @@ void Vampires::VampireMove(void)
 	switch (direction)
 	{
 	case(0):		// up
-		MoveUp();
+		MoveUp('V');
 		break;
 	case(1):		// down
-		MoveDown();
+		MoveDown('V');
 		break;
 	case(2):		// left
-		MoveLeft();
+		MoveLeft('V');
 		break;
 	case(3):		// right
-		MoveRight();
+		MoveRight('V');
 		break;
 	case(4):		// upper left
 		MoveUpperLeft();
@@ -200,22 +200,22 @@ char Avatar::Move(void)
 	{
 	case(72):
 		cout << "UP\n";
-		MoveUp();
+		MoveUp('A');
 		break;
 
 	case(80):
 		cout << "DOWN\n";
-		MoveDown();
+		MoveDown('A');
 		break;
 
 	case(75):
 		cout << "LEFT\n";
-		MoveLeft();
+		MoveLeft('A');
 		break;
 
 	case(77):
 		cout << "RIGHT\n";
-		MoveRight();
+		MoveRight('A');
 		break;
 	default:
 		return inputkey;

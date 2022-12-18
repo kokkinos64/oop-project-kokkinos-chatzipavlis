@@ -25,10 +25,10 @@ public:
     int getY(void);
 
     // Move commands (for everyone)
-    void MoveUp(void);
-    void MoveDown(void);
-    void MoveLeft(void);
-    void MoveRight(void);
+    void MoveUp(char c);
+    void MoveDown(char c);
+    void MoveLeft(char c);
+    void MoveRight(char c);
 
 };
 
