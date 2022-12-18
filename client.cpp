@@ -24,14 +24,12 @@ int main(void)
 		cin >> team;
 	}
 
-	Avatar A(team);
+	Avatar A(team,&M);
 	
 	system("timeout 3");
 
 	// Starting the game
 	M.PrintMap();
-	
-	system("timeout 5");
 
 	while ((input = A.Move()) != 'q')
 	{

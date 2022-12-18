@@ -45,22 +45,30 @@ int God::getY(void)
 
 void God::MoveUp(void)
 {
+	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
 	LocationY--;
+	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 void God::MoveDown(void)
 {
+	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
 	LocationY++;
+	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 void God::MoveLeft(void)
 {
+	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
 	LocationX--;
+	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 void God::MoveRight(void)
 {
+	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
 	LocationX++;
+	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 // WEREWOLF MEMBER-FUNCTIONS
@@ -152,7 +160,7 @@ void Vampires::MoveLowerRight(void)
 // AVATAR MEMBER-FUNCTIONS
 
 // Constructor
-Avatar::Avatar(char t) : Team_Selection(t)
+Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 {
 	// Team_Selection = t;
 	cout << "Avatar created.\n" << "Your team: ";
@@ -166,10 +174,19 @@ Avatar::Avatar(char t) : Team_Selection(t)
 		cout << "Vampires";
 		break;
 	}
-
 	cout << endl;
-
+	
+	// Equip magic potion
 	MagicPotCount = 1;	// Magic pot initialized to 1 at the start of each game
+	
+	// Map address
+	mp = m;				// Pass through the address of map
+
+	// Place avatar
+	LocationX = 2;
+	LocationY = 2;
+	m->InsertAt(LocationX, LocationY, 'A');
+	
 }
 
 char Avatar::Move(void)
@@ -188,17 +205,17 @@ char Avatar::Move(void)
 
 	case(80):
 		cout << "DOWN\n";
-		return 'd';
+		MoveDown();
 		break;
 
 	case(75):
 		cout << "LEFT\n";
-		return 'l';
+		MoveLeft();
 		break;
 
 	case(77):
 		cout << "RIGHT\n";
-		return 'r';
+		MoveRight();
 		break;
 	default:
 		return inputkey;

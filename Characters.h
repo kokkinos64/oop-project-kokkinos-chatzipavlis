@@ -1,4 +1,5 @@
 #pragma once
+#include "Map2.h"
 
 class Avatar;
 
@@ -11,6 +12,7 @@ protected:
     /*const*/ int Defense;
 
     int LocationX, LocationY;   // Its position on the map
+    Map *mp;                     // Pointer to map
 
 public:
     God(void);  // Constructor
@@ -54,7 +56,7 @@ private:
     char Team_Selection;
 
 public:
-    Avatar(char);   // Constructor
+    Avatar(char, Map*);   // Constructor
     char Move(void);
     void PauseGame(void);
 };
