@@ -80,6 +80,7 @@ Werewolves::Werewolves(Map *m)
 	// Map address
 	mp = m;				// Pass through the address of map
 
+	// Place the wereolf at a random spot on the matrix
 	LocationX = rand() % m->getRows();		// Range: [0,Rows]
 	LocationY = rand() % m->getCols();		// Range: [0,Cols]
 	m->InsertAt(LocationX, LocationY, 'W');
