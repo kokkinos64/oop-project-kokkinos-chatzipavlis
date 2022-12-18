@@ -35,6 +35,8 @@ public:
 class Vampires : public God
 {
 public:
+    Vampires(Map*);
+
     void VampireMove(void);
 
     void MoveUpperLeft(void);       // Vampires only
