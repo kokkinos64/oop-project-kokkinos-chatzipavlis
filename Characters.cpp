@@ -46,28 +46,28 @@ int God::getY(void)
 void God::MoveUp(void)
 {
 	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationY--;
+	LocationX--;
 	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 void God::MoveDown(void)
 {
 	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationY++;
+	LocationX++;
 	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 void God::MoveLeft(void)
 {
 	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationX--;
+	LocationY--;
 	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
 void God::MoveRight(void)
 {
 	mp->RemoveFrom(LocationX, LocationY);	// Remove the previous character
-	LocationX++;
+	LocationY++;
 	mp->InsertAt(LocationX, LocationY, 'A');
 }
 
