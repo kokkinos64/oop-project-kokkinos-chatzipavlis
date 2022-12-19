@@ -382,3 +382,84 @@ void Avatar::PauseGame(void)
 		exit(0);
 	}
 }
+
+
+void Avatar::DecreaseMagicPotCount(void) {
+	MagicPotCount--;
+}
+
+void Avatar::IncreaseMagicPotCount(void) {
+	MagicPotCount++;
+}
+
+void Avatar::MoveUp(char c)
+{
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationX--;	// Change location
+	s = mp->InsertAt(LocationX, LocationY, c, this);
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX++;
+		mp->InsertAt(LocationX, LocationY, c, this);
+	}
+
+	//mp->PrintMap();
+}
+
+void Avatar::MoveDown(char c)
+{
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationX++;								// Change location
+	s = mp->InsertAt(LocationX, LocationY, c, this);		// Place the character at the new spot
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX--;
+		mp->InsertAt(LocationX, LocationY, c, this);
+	}
+
+	//mp->PrintMap();
+}
+
+void Avatar::MoveLeft(char c)
+{
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationY--;								// Change location
+	s = mp->InsertAt(LocationX, LocationY, c, this);		// Place the character at the new spot
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationY++;
+		mp->InsertAt(LocationX, LocationY, c, this);
+	}
+
+	//mp->PrintMap();
+}
+
+void Avatar::MoveRight(char c)
+{
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationY++;								// Change location
+	s = mp->InsertAt(LocationX, LocationY, c);		// Place the character at the new spot
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationY--;
+		mp->InsertAt(LocationX, LocationY, c);
+	}
+
+	//mp->PrintMap();
+}

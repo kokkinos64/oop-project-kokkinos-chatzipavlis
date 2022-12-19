@@ -62,4 +62,10 @@ public:
     Avatar(char, Map*);   // Constructor
     char Move(void);
     void PauseGame(void);
+    void DecreaseMagicPotCount(void);
+    void IncreaseMagicPotCount(void);
+    void MoveUp(char c);
+    void MoveDown(char c);
+    void MoveLeft(char c);
+    void MoveRight(char c);
 };

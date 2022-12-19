@@ -25,7 +25,9 @@ int main(void)
 		cin >> team;
 	}
 
-	Avatar A(team,&M);
+	God* Avatarptr; 
+	Avatar A(team, &M);
+	Avatarptr = &A;
 	Werewolves W1(&M);
 	Vampires V1(&M);
 	//M.PrintMap();
@@ -35,13 +37,13 @@ int main(void)
 	// Starting the game
 	M.PrintMap();
 
-	while ((input = A.Move()) != 'q')
+	while ((input = Avatarptr->Move()) != 'q')
 	{
 		M.PrintMap();
 		// PAUSE
 		if (input == 'p')
 		{
-			A.PauseGame();
+			Avatarptr->PauseGame();
 		}
 
 		W1.WerewolfMove();

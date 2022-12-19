@@ -69,28 +69,34 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 
 }
 
+bool Map::InsertAt(int i, int j, char c, Avatar &a)  {
+	// FOR AVATAR ONLY
+	if (c == 'A' && Matrix[i][j] == '&')	// If the Avatar steps onto the Magic Pot
+	{
+		Matrix[i][j] = c;					// Step onto it
+		a.IncreaseMagicPotCount();
+		return true;
+	}
+
+	if (c == 'A' && Matrix[i][j] == '*')
+	{
+		Matrix[i][j] = c;					// Step onto it
+		return true;
+	}
+
+	if (c == 'A' && ((Matrix[i][j] == 'W') || (Matrix[i][j] == 'V')))	// The Avatar cannot go over a W or V
+	{
+		return false;
+	}
+}
+
+
 bool Map::InsertAt(int i, int j, char c)
 {	
 	/* Bottom and Right borders */	/* Top and Left borders */
 	if ((i < Rows) && (j < Cols) && (i > -1) && (j > -1)) 	// Check if we are within matrix borders
 	{	
-		// FOR AVATAR ONLY
-		if (c == 'A' && Matrix[i][j] == '&')	// If the Avatar steps onto the Magic Pot
-		{
-			Matrix[i][j] = c;					// Step onto it
-			return true;
-		}
-
-		if (c == 'A' && Matrix[i][j] == '*')
-		{
-			Matrix[i][j] = c;					// Step onto it
-			return true;
-		}
-
-		if (c == 'A' && ((Matrix[i][j] == 'W') || (Matrix[i][j] == 'V')))	// The Avatar cannot go over a W or V
-		{
-			return false;
-		}
+		
 		
 		// FOR EVERYONE
 		if (Matrix[i][j] == '#' || Matrix[i][j] == '~')
