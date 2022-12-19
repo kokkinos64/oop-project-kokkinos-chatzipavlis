@@ -71,7 +71,7 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 
 bool Map::InsertAt(int i, int j, char c)
 {
-	if ((i < Rows) || (j < Cols))	// Check if we are within matrix borders
+	if ((i < Rows) && (j < Cols))	// Check if we are within matrix borders
 	{	
 		// FOR AVATAR ONLY
 		if (c == 'A' && Matrix[i][j] == '&')	// If the Avatar steps onto the Magic Pot
