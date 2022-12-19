@@ -86,6 +86,11 @@ bool Map::InsertAt(int i, int j, char c)
 			Matrix[i][j] = c;					// Step onto it
 			return true;
 		}
+
+		if (c == 'A' && ((Matrix[i][j] == 'W') || (Matrix[i][j] == 'V')))	// The Avatar cannot go over a W or V
+		{
+			return false;
+		}
 		
 		// FOR EVERYONE
 		if (Matrix[i][j] == '#' || Matrix[i][j] == '~')
@@ -94,10 +99,15 @@ bool Map::InsertAt(int i, int j, char c)
 		}
 
 		// FOR WEREWOLF
-		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V')/* || Matrix[i][j] == 'A'*/)	// Do not cross over anything
+		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A'))	// Do not cross over anything
 		{
 			return false;
 		}
+
+		/*if ((c == 'W') && (Matrix[i][j] = 'A'))
+		{
+			return false;
+		}*/
 
 		// FOR VAMPIRE
 		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W')/* || Matrix[i][j] == 'A'*/)
@@ -111,7 +121,7 @@ bool Map::InsertAt(int i, int j, char c)
 			return true;
 		}
 
-		if (c == 'W' && c == '*')
+		if (c == 'W' && Matrix[i][j] == '*')	// The W can go over grass
 		{
 			Matrix[i][j] = c;
 			return true;

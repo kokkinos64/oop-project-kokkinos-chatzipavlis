@@ -26,7 +26,7 @@ int main(void)
 	}
 
 	Avatar A(team,&M);
-	//Werewolves W1(&M);
+	Werewolves W1(&M);
 	//Vampires V1(&M);
 	
 	system("timeout 3");
@@ -36,13 +36,14 @@ int main(void)
 
 	while ((input = A.Move()) != 'q')
 	{
+		M.PrintMap();
 		// PAUSE
 		if (input == 'p')
 		{
 			A.PauseGame();
 		}
 
-		//W1.WerewolfMove();
+		W1.WerewolfMove();
 		//V1.VampireMove();
 		M.PrintMap();
 	}
