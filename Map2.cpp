@@ -99,7 +99,7 @@ bool Map::InsertAt(int i, int j, char c)
 		}
 
 		// FOR WEREWOLF
-		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A'))	// Do not cross over anything
+		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A' || Matrix[i][j] == '&'))	// Do not cross over anything
 		{
 			return false;
 		}
