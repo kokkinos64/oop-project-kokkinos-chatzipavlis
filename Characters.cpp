@@ -9,7 +9,7 @@
 using namespace std;
 
 // GLOBALS
-int WerewolfCount = 0, VampireCount = 0;    // Global counters for the members of each team, initialized to 0.
+
 
 // GOD MEMBER-FUNCTIONS
 
@@ -119,11 +119,14 @@ void God::MoveRight(char c)
 
 Werewolves::Werewolves(Map *m)
 {
-	srand((unsigned)time(NULL));	// Seed for rand
+	//srand((unsigned)time(NULL));	// Seed for rand
 
 	// Map address
 	mp = m;				// Pass through the address of map
 
+	//for (int i = 1; i <= m->getRows(); i++) {
+		
+	//}
 	// Place the wereolf at a random spot on the matrix
 	LocationX = rand() % m->getRows();		// Range: [0,Rows]
 	LocationY = rand() % m->getCols();		// Range: [0,Cols]
@@ -133,7 +136,7 @@ Werewolves::Werewolves(Map *m)
 
 void Werewolves::WerewolfMove(void)
 {
-	srand((unsigned)time(NULL));	// Seed for rand
+	//srand((unsigned)time(NULL));	// Seed for rand
 
 	int direction = rand() % 4;		// Range: [0,3]
 
@@ -158,7 +161,7 @@ void Werewolves::WerewolfMove(void)
 
 Vampires::Vampires(Map* m)
 {
-	srand((unsigned)time(NULL));	// Seed for rand
+	//srand((unsigned)time(NULL));	// Seed for rand
 
 	// Map address
 	mp = m;				// Pass through the address of map
@@ -175,7 +178,7 @@ Vampires::Vampires(Map* m)
 
 void Vampires::VampireMove(void)
 {
-	srand((unsigned)time(NULL));	// Seed for rand
+	//srand((unsigned)time(NULL));	// Seed for rand
 
 	int direction = rand() % 8;		// Range: [0,7]
 
@@ -356,8 +359,7 @@ char Avatar::Move(void)
 	cout << inputkey << endl;
 }
 
-void Avatar::PauseGame(void)
-{
+void Avatar::PauseGame(int VampireCount, int WerewolfCount){
 	int getch();
 	char input;
 

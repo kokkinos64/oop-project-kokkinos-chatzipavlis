@@ -61,5 +61,5 @@ private:
 public:
     Avatar(char, Map*);   // Constructor
     char Move(void);
-    void PauseGame(void);
+    void PauseGame(int, int);
 };

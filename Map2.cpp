@@ -83,7 +83,7 @@ bool Map::InsertAt(int i, int j, char c)
 
 		if (c == 'A' && Matrix[i][j] == '*')
 		{
-			Matrix[i][j] = c;					// Step onto it
+			Matrix[i][j] = c;	// Step onto it
 			return true;
 		}
 
@@ -186,7 +186,7 @@ void Map::PrintMap(void)
 
 	for (i = 0; i < Rows; i++)
 	{
-		cout << "matrix[" << i << "]: "; // Print the number of the current row
+		cout << "matrix[" << i << "]:\t"; // Print the number of the current row
 
 		for (j = 0; j < Cols; j++)
 		{

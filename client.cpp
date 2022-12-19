@@ -9,6 +9,7 @@ int main(void)
 {
 	int x, y;
 	char team, input;
+	int WerewolfCount = 0, VampireCount = 0;    // Global counters for the members of each team, initialized to 0.
 
 	// Create the map
 	cout << "Enter map dimentions (x y): ";
@@ -30,8 +31,8 @@ int main(void)
 	/*Werewolves W1(&M);
 	Vampires V1(&M);*/
 
-	vector<Werewolves*> WerewolfVector;
-	vector<Vampires*> VampireVector;
+	vector<Werewolves*> WerewolfVector;			//Create pointer vectors with werewolves
+	vector<Vampires*> VampireVector;			//Create pointer vectors with vampires
 
 	// Calculate the number of monsters that'll be created
 	int MonstersNum = (x * y) / 30;
@@ -39,7 +40,9 @@ int main(void)
 	for (int i = 0; i < MonstersNum; i++)
 	{
 		WerewolfVector.push_back(new Werewolves(&M));
+		WerewolfCount++;
 		VampireVector.push_back(new Vampires(&M));
+		VampireCount++;
 	}
 
 	// Starting the game
@@ -55,7 +58,7 @@ int main(void)
 		// PAUSE
 		if (input == 'p')
 		{
-			A.PauseGame();
+			A.PauseGame(VampireCount, WerewolfCount);
 		}
 
 		// Monster movements
@@ -68,10 +71,10 @@ int main(void)
 
 		/*W1.WerewolfMove();
 		V1.VampireMove();*/
-		/*M.PrintMap();*/
+		M.PrintMap();
 	}
 
 	cout << "QUIT\n";
-	system("timeout 2");
+	system("timeout 5");
 	return 0;
 }
