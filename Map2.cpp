@@ -104,24 +104,26 @@ bool Map::InsertAt(int i, int j, char c)
 			return false;
 		}
 
-		/*if ((c == 'W') && (Matrix[i][j] = 'A'))
-		{
-			return false;
-		}*/
-
-		// FOR VAMPIRE
-		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W')/* || Matrix[i][j] == 'A'*/)
-		{
-			return false;
-		}
-
-		if (c == '#' || c == '~')
+		if (c == 'W' && Matrix[i][j] == '*')	// The W can go over grass
 		{
 			Matrix[i][j] = c;
 			return true;
 		}
 
-		if (c == 'W' && Matrix[i][j] == '*')	// The W can go over grass
+		// FOR VAMPIRE
+		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W' || Matrix[i][j] == 'A' || Matrix[i][j] == '&'))	// Do not cross over anything
+		{
+			return false;
+		}
+
+		if (c == 'V' && Matrix[i][j] == '*')	// The V can go over grass
+		{
+			Matrix[i][j] = c;
+			return true;
+		}
+
+		// Obsticles
+		if (c == '#' || c == '~')
 		{
 			Matrix[i][j] = c;
 			return true;

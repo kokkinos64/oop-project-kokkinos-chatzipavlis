@@ -166,6 +166,10 @@ Vampires::Vampires(Map* m)
 	// Place the wereolf at a random spot on the matrix
 	LocationX = rand() % m->getRows();		// Range: [0,Rows]
 	LocationY = rand() % m->getCols();		// Range: [0,Cols]
+
+	/*LocationX = 9;
+	LocationY = 9;*/
+
 	m->InsertAt(LocationX, LocationY, 'V');
 }
 
@@ -206,26 +210,74 @@ void Vampires::VampireMove(void)
 
 void Vampires::MoveUpperLeft(void)
 {
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX--;
-	LocationY--;
+	LocationY--;	// Change location
+	s = mp->InsertAt(LocationX, LocationY, 'V');
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX++;
+		LocationY++;
+		mp->InsertAt(LocationX, LocationY, 'V');
+	}
 }
 
 void Vampires::MoveUpperRight(void)
 {
-	LocationX++;
-	LocationY--;
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
+	LocationY++;
+	LocationX--;	// Change location
+	s = mp->InsertAt(LocationX, LocationY, 'V');
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX++;
+		LocationY--;
+		mp->InsertAt(LocationX, LocationY, 'V');
+	}
 }
 
 void Vampires::MoveLowerLeft(void)
 {
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX--;
-	LocationY++;
+	LocationY++;	// Change location
+	s = mp->InsertAt(LocationX, LocationY, 'V');
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX++;
+		LocationY--;
+		mp->InsertAt(LocationX, LocationY, 'V');
+	}
 }
 
 void Vampires::MoveLowerRight(void)
 {
+	bool s = true;
+
+	mp->RemoveFrom(LocationX, LocationY);		// Remove the previous character
 	LocationX++;
-	LocationY++;
+	LocationY++;	// Change location
+	s = mp->InsertAt(LocationX, LocationY, 'V');
+
+	// If placement was unsucessful, go back
+	if (s == false)
+	{
+		LocationX--;
+		LocationY--;
+		mp->InsertAt(LocationX, LocationY, 'V');
+	}
 }
 
 // AVATAR MEMBER-FUNCTIONS
