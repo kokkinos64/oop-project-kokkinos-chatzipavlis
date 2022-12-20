@@ -15,8 +15,6 @@ Map::Map(int x, int y) : Rows(x), Cols(y)
 	srand((unsigned)time(NULL));	// Time-based seed for rand()
 
 	isMagicPotPlaced = false;
-	isNight = false;
-
 	// Matrix construction
 	Matrix = new char* [Rows];
 
