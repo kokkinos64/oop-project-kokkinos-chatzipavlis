@@ -33,6 +33,10 @@ int God::getDefense(void)
 
 God::God(void)
 {
+	Health = 10;
+	Meds = rand() % 3;			// Range = [0,2]
+	Attack = (rand() % 3) + 1;	// Range = [1,3]
+	Defense = (rand() % 2) + 1;	// Range = [1,2]
     cout << "God's constructor activated.\n";
 }
 
@@ -44,6 +48,11 @@ int God::getX(void)
 int God::getY(void)
 {
     return LocationY;
+}
+
+void God::HealthDecreaseBy(int x)
+{
+	Health = Health - x;
 }
 
 void God::MoveUp(char c)

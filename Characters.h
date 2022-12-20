@@ -6,7 +6,7 @@ class Avatar;
 class God
 {
 protected:
-    int Health = 10;
+    int Health;
     int Meds;
     /*const*/ int Attack;
     /*const*/ int Defense;
@@ -23,6 +23,9 @@ public:
     int getDefense(void);
     int getX(void);
     int getY(void);
+
+    // Adjustment functions
+    void HealthDecreaseBy(int);
 
     // Move commands (for everyone)
     void MoveUp(char c);
