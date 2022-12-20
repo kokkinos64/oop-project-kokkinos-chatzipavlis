@@ -9,7 +9,6 @@ int main(void)
 {
 	int x, y;
 	char team, input;
-	int WerewolfCount = 0, VampireCount = 0;    // Global counters for the members of each team, initialized to 0.
 
 	// Create the map
 	cout << "Enter map dimentions (x y): ";
@@ -27,10 +26,9 @@ int main(void)
 		cin >> team;
 	}
 
-	Avatar A(team,&M);
-	/*Werewolves W1(&M);
-	Vampires V1(&M);*/
+	// OBJECT CREATION
 
+	Avatar A(team,&M);
 	vector<Werewolves*> WerewolfVector;			//Create pointer vectors with werewolves
 	vector<Vampires*> VampireVector;			//Create pointer vectors with vampires
 
@@ -40,9 +38,9 @@ int main(void)
 	for (int i = 0; i < MonstersNum; i++)
 	{
 		WerewolfVector.push_back(new Werewolves(&M));
-		WerewolfCount++;
+		A.WerewolfCount++;
 		VampireVector.push_back(new Vampires(&M));
-		VampireCount++;
+		A.VampireCount++;
 	}
 
 	// Starting the game
@@ -52,14 +50,11 @@ int main(void)
 	/*vector<Werewolves*>::iterator itrW;
 	vector<Vampires*>::iterator itrV;*/
 
-	while ((input = A.Move()) != 'q')
+	input = A.Move();
+
+	while (input != 'q')
 	{
 		M.PrintMap();
-		// PAUSE
-		if (input == 'p')
-		{
-			A.PauseGame(VampireCount, WerewolfCount);
-		}
 
 		// Monster movements
 		for (int i = 0; i < MonstersNum; i++)
@@ -67,11 +62,10 @@ int main(void)
 			WerewolfVector.at(i)->WerewolfMove();
 			VampireVector.at(i)->VampireMove();
 		}
-		
 
-		/*W1.WerewolfMove();
-		V1.VampireMove();*/
 		M.PrintMap();
+
+		input = A.Move();
 	}
 
 	cout << "QUIT\n";

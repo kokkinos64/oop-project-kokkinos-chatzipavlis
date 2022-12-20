@@ -55,11 +55,11 @@ public:
 class Avatar : public God
 {
 private:
-    int MagicPotCount; 
     char Team_Selection;
 
 public:
     Avatar(char, Map*);   // Constructor
     char Move(void);
     void PauseGame(int, int);
+    int MagicPotCount, VampireCount, WerewolfCount;
 };

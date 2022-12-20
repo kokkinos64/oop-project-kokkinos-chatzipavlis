@@ -5,10 +5,14 @@
 #include "Characters.h"
 #include "Map2.h"
 
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_Q ('q')
+#define KEY_P ('p')
 
 using namespace std;
-
-
 
 // GOD MEMBER-FUNCTIONS
 
@@ -57,7 +61,7 @@ void God::MoveUp(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 
-	mp->PrintMap();
+	//mp->PrintMap();
 }
 
 void God::MoveDown(char c)
@@ -75,7 +79,7 @@ void God::MoveDown(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 	
-	mp->PrintMap();
+	//mp->PrintMap();
 }
 
 void God::MoveLeft(char c)
@@ -93,7 +97,7 @@ void God::MoveLeft(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 	
-	mp->PrintMap();
+	//mp->PrintMap();
 }
 
 void God::MoveRight(char c)
@@ -111,7 +115,7 @@ void God::MoveRight(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 	
-	mp->PrintMap();
+	//mp->PrintMap();
 }
 
 // WEREWOLF MEMBER-FUNCTIONS
@@ -182,7 +186,8 @@ Vampires::Vampires(Map* m)
 
 void Vampires::VampireMove(void)
 {
-	//srand((unsigned)time(NULL));	// Seed for rand
+	
+	srand((unsigned)time(NULL));	// Seed for rand
 
 	int direction = rand() % 8;		// Range: [0,7]
 
@@ -324,43 +329,44 @@ Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 	LocationX = 2;
 	LocationY = 2;
 	m->InsertAt(LocationX, LocationY, 'A');
+
+	// Reset counters
+	VampireCount = WerewolfCount = 0;
 	
 }
 
 char Avatar::Move(void)
-{
-	int getch();
-	char inputkey;
+{	
 
-	inputkey = getch();
+	char key = getch();
+	int value = key;
 
-	switch (inputkey)
-	{
-	case(72):
-		cout << "UP\n";
-		MoveUp('A');
-		break;
+		switch (getch())
+		{
+		case(KEY_UP):
+			MoveUp('A');
+			break;
 
-	case(80):
-		cout << "DOWN\n";
-		MoveDown('A');
-		break;
+		case(KEY_DOWN):
+			MoveDown('A');
+			break;
 
-	case(75):
-		cout << "LEFT\n";
-		MoveLeft('A');
-		break;
+		case(KEY_LEFT):
+			MoveLeft('A');
+			break;
 
-	case(77):
-		cout << "RIGHT\n";
-		MoveRight('A');
-		break;
-	default:
-		return inputkey;
-		break;
-	}
+		case(KEY_RIGHT):
+			MoveRight('A');
+			break;
 
-	cout << inputkey << endl;
+		case(KEY_P):
+			// PAUSE
+			PauseGame(VampireCount, WerewolfCount);
+			break;
+
+		default:
+			return 'q';
+		}
 }
 
 void Avatar::PauseGame(int VampireCount, int WerewolfCount){
