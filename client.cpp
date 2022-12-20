@@ -49,16 +49,30 @@ int main(void)
 	// Create vector iterators, used to traverse the vectors
 	/*vector<Werewolves*>::iterator itrW;
 	vector<Vampires*>::iterator itrV;*/
-
+	
 	input = A.Move();
 
-	while (input != 'q')
+	while (input != 'q' || A.VampireCount != 0 || A.WerewolfCount != 0)
 	{
 		M.PrintMap();
 
 		// Monster movements
 		for (int i = 0; i < MonstersNum; i++)
-		{
+		{	
+			// Check health status
+			if (WerewolfVector.at(i)->getHealth() == 0)
+			{
+				delete WerewolfVector.at(i);
+				A.WerewolfCount--;
+			}
+
+			if (VampireVector.at(i)->getHealth() == 0)
+			{
+				delete VampireVector.at(i);
+				A.VampireCount--;
+			}
+
+			// Move monsters
 			WerewolfVector.at(i)->WerewolfMove();
 			VampireVector.at(i)->VampireMove();
 		}

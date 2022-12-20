@@ -64,5 +64,8 @@ public:
     Avatar(char, Map*);   // Constructor
     char Move(void);
     void PauseGame(int, int);
+
+    // Variables for the turn-based game
     int MagicPotCount, VampireCount, WerewolfCount;
+    bool isNight;
 };

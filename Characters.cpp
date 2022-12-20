@@ -341,7 +341,7 @@ Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 
 	// Reset counters
 	VampireCount = WerewolfCount = 0;
-	
+	isNight = false;	// Daytime at start of game
 }
 
 char Avatar::Move(void)

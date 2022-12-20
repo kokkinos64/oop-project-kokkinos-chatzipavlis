@@ -5,7 +5,6 @@ class Map
 private:
 	int Rows, Cols;
 	char** Matrix;
-	bool isNight;
 	bool isMagicPotPlaced;
 
 public:
