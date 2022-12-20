@@ -8,7 +8,6 @@
 
 using namespace std;
 
-// GLOBALS
 
 
 // GOD MEMBER-FUNCTIONS
@@ -124,15 +123,20 @@ Werewolves::Werewolves(Map *m)
 	// Map address
 	mp = m;				// Pass through the address of map
 
-	//for (int i = 1; i <= m->getRows(); i++) {
-		
+	/*for (int i = 1; i <= m->getRows(); i++) {
+		for (int j = 1; j <= m->getCols(); j++) {				// κατι τετοιο ελεγα εγω σε φαση να βγουν αυτα στο πρωτο μισο
+			LocationX = (m->getRows() / 2) - 1;					// και τα vampire στο αλλο μισο
+			LocationY = (m->getCols() / 2) - j;					// ειναι σε πολυ προϊμο σταδιο η σκεψη αλλα ναι
+			m->InsertAt(LocationX, LocationY, 'W');
+		}
+	}*/
 	//}
 	// Place the wereolf at a random spot on the matrix
-	LocationX = rand() % m->getRows();		// Range: [0,Rows]
-	LocationY = rand() % m->getCols();		// Range: [0,Cols]
-	m->InsertAt(LocationX, LocationY, 'W');
+	LocationX = rand() % m->getRows();		// Range: [0,Rows]		//επισης μπορουμε να κανουμε ενα if εδω και να πουμε 
+	LocationY = rand() % m->getCols();		// Range: [0,Cols]		// οτι αν εκει που παει να το τοποθετησει δεν ειναι *
+	m->InsertAt(LocationX, LocationY, 'W');							// τοτε ξανα κανε rand μεχρι να πεσει σε κενο κελι
 
-}
+};
 
 void Werewolves::WerewolfMove(void)
 {
