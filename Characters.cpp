@@ -340,8 +340,15 @@ Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 	m->InsertAt(LocationX, LocationY, 'A');
 
 	// Reset counters
-	VampireCount = WerewolfCount = 0;
-	isNight = false;	// Daytime at start of game
+	VampireCount = WerewolfCount = DaytimeCounter = 0;
+	isDaytime = true;	// Daytime at start of game
+
+	while (true) {
+		if (DaytimeCounter % 5 == 0) {
+			isDaytime = !isDaytime;
+			cout << "Daytime has changed";
+		}
+	}
 }
 
 char Avatar::Move(void)
@@ -354,18 +361,22 @@ char Avatar::Move(void)
 		{
 		case(KEY_UP):
 			MoveUp('A');
+			DaytimeCounter++;
 			break;
 
 		case(KEY_DOWN):
 			MoveDown('A');
+			DaytimeCounter++;
 			break;
 
 		case(KEY_LEFT):
 			MoveLeft('A');
+			DaytimeCounter++;
 			break;
 
 		case(KEY_RIGHT):
 			MoveRight('A');
+			DaytimeCounter++;
 			break;
 
 		case(KEY_P):

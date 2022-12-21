@@ -66,6 +66,6 @@ public:
     void PauseGame(int, int);
 
     // Variables for the turn-based game
-    int MagicPotCount, VampireCount, WerewolfCount;
-    bool isNight;
+    int MagicPotCount, VampireCount, WerewolfCount, DaytimeCounter;
+    bool isDaytime;
 };
