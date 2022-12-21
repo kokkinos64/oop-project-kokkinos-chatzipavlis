@@ -56,6 +56,12 @@ int main(void)
 	{
 		M.PrintMap();
 
+		// Change the time of day
+		if ((A.DaytimeCounter %= 5) == 0) {
+			A.isDaytime = !(A.isDaytime);	// Switch daytime
+			cout << "Daytime has changed\n";
+		}
+
 		// Monster movements
 		for (int i = 0; i < MonstersNum; i++)
 		{	
@@ -78,6 +84,8 @@ int main(void)
 		}
 
 		M.PrintMap();
+
+		A.DaytimeCounter++;
 
 		input = A.Move();
 	}
