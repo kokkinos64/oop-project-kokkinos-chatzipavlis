@@ -172,7 +172,6 @@ void Map::RemoveFrom(int i, int j)
 	//}
 }
 
-
 void Map::PrintMap(void)
 {
 

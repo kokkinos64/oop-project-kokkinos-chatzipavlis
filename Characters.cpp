@@ -411,3 +411,31 @@ void Avatar::PauseGame(int VampireCount, int WerewolfCount){
 		exit(0);
 	}
 }
+
+void Avatar::PrintCurrentDayTime(void)
+{
+	cout << "Current time: ";
+
+	if (isDaytime == true)
+	{
+		cout << "DAY" << endl;
+	}
+	else
+	{
+		cout << "NIGHT" << endl;
+	}
+}
+
+void Avatar::PrintCurrentTeam(void)
+{
+	cout << "Your team is ";
+
+	if (Team_Selection == 'w')
+	{
+		cout << "Werewolves\n";
+	}
+	else
+	{
+		cout << "Vampires\n";
+	}
+}

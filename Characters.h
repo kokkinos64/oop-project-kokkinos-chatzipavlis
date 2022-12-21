@@ -64,6 +64,8 @@ public:
     Avatar(char, Map*);   // Constructor
     char Move(void);
     void PauseGame(int, int);
+    void PrintCurrentDayTime(void);
+    void PrintCurrentTeam(void);
 
     // Variables for the turn-based game
     int MagicPotCount, VampireCount, WerewolfCount, DaytimeCounter;

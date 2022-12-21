@@ -44,6 +44,8 @@ int main(void)
 	}
 
 	// Starting the game
+	A.PrintCurrentDayTime();
+	A.PrintCurrentTeam();
 	M.PrintMap();
 
 	// Create vector iterators, used to traverse the vectors
@@ -84,6 +86,8 @@ int main(void)
 		}
 
 		M.PrintMap();
+		A.PrintCurrentDayTime();
+		A.PrintCurrentTeam();
 
 		A.DaytimeCounter++;
 
