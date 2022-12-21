@@ -8,7 +8,7 @@ using namespace std;
 int main(void)
 {
 	int x, y;
-	char team, input;
+	char team;
 
 	// Create the map
 	cout << "Enter map dimentions (x y): ";
@@ -52,49 +52,50 @@ int main(void)
 	/*vector<Werewolves*>::iterator itrW;
 	vector<Vampires*>::iterator itrV;*/
 	
-	input = A.Move();
+	A.Move();
 
-	while (input != 'q' || A.VampireCount != 0 || A.WerewolfCount != 0)
-	{
-		M.PrintMap();
+		while (A.VampireCount != 0 || A.WerewolfCount != 0)
+		{
+			M.PrintMap();
 
-		// Change the time of day
-		if ((A.DaytimeCounter %= 5) == 0) {
-			A.isDaytime = !(A.isDaytime);	// Switch daytime
-			cout << "Daytime has changed\n";
-		}
-
-		// Monster movements
-		for (int i = 0; i < MonstersNum; i++)
-		{	
-			// Check health status
-			if (WerewolfVector.at(i)->getHealth() == 0)
-			{
-				delete WerewolfVector.at(i);
-				A.WerewolfCount--;
+			// Change the time of day
+			if ((A.DaytimeCounter %= 5) == 0) {
+				A.isDaytime = !(A.isDaytime);	// Switch daytime
+				cout << "Daytime has changed\n";
 			}
 
-			if (VampireVector.at(i)->getHealth() == 0)
+			// Monster movements
+			for (int i = 0; i < MonstersNum; i++)
 			{
-				delete VampireVector.at(i);
-				A.VampireCount--;
+				// Check health status
+				if (WerewolfVector.at(i)->getHealth() == 0)
+				{
+					delete WerewolfVector.at(i);
+					A.WerewolfCount--;
+				}
+
+				if (VampireVector.at(i)->getHealth() == 0)
+				{
+					delete VampireVector.at(i);
+					A.VampireCount--;
+				}
+
+				// Move monsters
+				WerewolfVector.at(i)->WerewolfMove();
+				VampireVector.at(i)->VampireMove();
 			}
 
-			// Move monsters
-			WerewolfVector.at(i)->WerewolfMove();
-			VampireVector.at(i)->VampireMove();
+			M.PrintMap();
+			A.PrintCurrentDayTime();
+			A.PrintCurrentTeam();
+
+			A.DaytimeCounter++;
+
+			A.Move();
 		}
+	
 
-		M.PrintMap();
-		A.PrintCurrentDayTime();
-		A.PrintCurrentTeam();
-
-		A.DaytimeCounter++;
-
-		input = A.Move();
-	}
-
-	cout << "QUIT\n";
-	system("timeout 5");
+		cout << "A team has been eliminated.\n\nGAME OVER\n";
+		system("timeout 5");
 	return 0;
 }

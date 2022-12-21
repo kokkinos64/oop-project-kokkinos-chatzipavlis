@@ -9,7 +9,7 @@
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
-#define KEY_Q ('q')
+#define KEY_Q 17
 #define KEY_P ('p')
 
 using namespace std;
@@ -374,7 +374,9 @@ char Avatar::Move(void)
 			break;
 
 		default:
-			return 'q';
+			cout << "QUIT\n";
+			system("timeout 5");
+			exit(0);
 		}
 }
 
