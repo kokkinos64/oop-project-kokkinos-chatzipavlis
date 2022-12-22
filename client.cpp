@@ -84,8 +84,6 @@ int main(void)
 			WerewolfVector.at(i)->WerewolfMove();
 			VampireVector.at(i)->VampireMove();
 
-			M.PrintMap();
-
 			// Combat condition check
 			int WerewolfX = WerewolfVector.at(i)->getX();
 			int WerewolfY = WerewolfVector.at(i)->getY();
@@ -104,7 +102,7 @@ int main(void)
 			}
 		}
 
-		//M.PrintMap();
+		M.PrintMap();
 		A.PrintCurrentDayTime();
 		A.PrintCurrentTeam();
 

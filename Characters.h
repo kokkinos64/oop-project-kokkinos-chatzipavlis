@@ -67,6 +67,7 @@ public:
     void PauseGame(int, int);
     void PrintCurrentDayTime(void);
     void PrintCurrentTeam(void);
+    void UseMagicPot(void);
     static void IncreaseMagicPotCount(void);
 
     // Variables for the turn-based game

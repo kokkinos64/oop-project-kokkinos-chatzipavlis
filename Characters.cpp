@@ -11,7 +11,7 @@
 #define KEY_RIGHT 77
 #define KEY_Q 17
 #define KEY_P ('p')
-#define KEY_H ('h')
+#define KEY_H 104
 
 using namespace std;
 
@@ -345,8 +345,7 @@ Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 }
 
 char Avatar::Move(void)
-{	
-
+{
 	char key = getch();
 	int value = key;
 
@@ -375,20 +374,9 @@ char Avatar::Move(void)
 
 		case(KEY_H):
 			// HEALTH RESTORE
-			if (Team_Selection == 'w' && isDaytime == false)
-			{
-				cout << "Using magic potion on Werewolves.\n";
-				Werewolves::HealthRestore();
-			}
-			else if (Team_Selection == 'v' && isDaytime == true)
-			{
-				cout << "Using magic potion on Vampires.\n";
-				Vampires::HealthRestore();
-			}
-			else
-			{
-				cout << "Cannot use magic potion at this time.\n";
-			}
+			UseMagicPot();
+			system("timeout 2");
+			break;
 
 		default:
 			cout << "QUIT\n";
@@ -462,4 +450,31 @@ void Avatar::PrintCurrentTeam(void)
 void Avatar::IncreaseMagicPotCount(void)
 {
 	MagicPotCount++;
+}
+
+void Avatar::UseMagicPot(void)
+{	
+	if (MagicPotCount > 0)
+	{
+		if (Team_Selection == 'w' && isDaytime == false)
+		{
+			cout << "Using magic potion on Werewolves.\n";
+			Werewolves::HealthRestore();
+			MagicPotCount--;
+		}
+		else if (Team_Selection == 'v' && isDaytime == true)
+		{
+			cout << "Using magic potion on Vampires.\n";
+			Vampires::HealthRestore();
+			MagicPotCount--;
+		}
+		else
+		{
+			cout << "Cannot use magic potion at this time.\n";
+		}
+	}
+	else
+	{
+		cout << "You do not have any magic potions left.\n";
+	}
 }
