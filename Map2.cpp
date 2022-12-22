@@ -98,7 +98,7 @@ bool Map::InsertAt(int i, int j, char c)
 		}
 
 		// FOR WEREWOLF
-		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A' || Matrix[i][j] == '&'))	// Do not cross over anything
+		if (c == 'W' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'V' || Matrix[i][j] == 'A' || Matrix[i][j] == '&' || Matrix[i][j] == 'W'))	// Do not cross over anything
 		{
 			return false;
 		}
@@ -110,7 +110,7 @@ bool Map::InsertAt(int i, int j, char c)
 		}
 
 		// FOR VAMPIRE
-		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W' || Matrix[i][j] == 'A' || Matrix[i][j] == '&'))	// Do not cross over anything
+		if (c == 'V' && (Matrix[i][j] == '#' || Matrix[i][j] == '~' || Matrix[i][j] == 'W' || Matrix[i][j] == 'A' || Matrix[i][j] == '&' || Matrix[i][j] == 'V'))	// Do not cross over anything
 		{
 			return false;
 		}
