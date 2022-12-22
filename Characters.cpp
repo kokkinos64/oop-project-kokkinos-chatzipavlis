@@ -327,10 +327,7 @@ Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 		break;
 	}
 	cout << endl;
-	
-	// Equip magic potion
-	MagicPotCount = 1;	// Magic pot initialized to 1 at the start of each game
-	
+
 	// Map address
 	mp = m;				// Pass through the address of map
 
@@ -440,4 +437,9 @@ void Avatar::PrintCurrentTeam(void)
 	{
 		cout << "Vampires\n";
 	}
+}
+
+void Avatar::IncreaseMagicPotCount(void)
+{
+	MagicPotCount++;
 }

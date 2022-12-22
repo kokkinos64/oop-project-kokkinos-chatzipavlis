@@ -76,6 +76,7 @@ bool Map::InsertAt(int i, int j, char c)
 		if (c == 'A' && Matrix[i][j] == '&')	// If the Avatar steps onto the Magic Pot
 		{
 			Matrix[i][j] = c;					// Step onto it
+			Avatar::IncreaseMagicPotCount();	// Increase the counter by calling the static member function of Avatar
 			return true;
 		}
 

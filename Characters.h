@@ -59,6 +59,7 @@ class Avatar : public God
 {
 private:
     char Team_Selection;
+    inline static int MagicPotCount = 1;    // Magic potion counter is initialized to 1, at the start of every game
 
 public:
     Avatar(char, Map*);   // Constructor
@@ -66,8 +67,10 @@ public:
     void PauseGame(int, int);
     void PrintCurrentDayTime(void);
     void PrintCurrentTeam(void);
+    static void IncreaseMagicPotCount(void);
 
     // Variables for the turn-based game
-    int MagicPotCount, VampireCount, WerewolfCount, DaytimeCounter;
+    
+    int VampireCount, WerewolfCount, DaytimeCounter;
     bool isDaytime;
 };
