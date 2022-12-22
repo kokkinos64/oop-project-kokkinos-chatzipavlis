@@ -6,7 +6,7 @@ class Avatar;
 class God
 {
 protected:
-    int Health;
+    inline static int Health = 10;
     int Meds;
     /*const*/ int Attack;
     /*const*/ int Defense;
@@ -39,9 +39,8 @@ class Vampires : public God
 {
 public:
     Vampires(Map*);
-
+    static void HealthRestore(void);
     void VampireMove(void);
-
     void MoveUpperLeft(void);       // Vampires only
     void MoveUpperRight(void);      // Vampires only
     void MoveLowerLeft(void);       // Vampires only
@@ -52,6 +51,7 @@ class Werewolves : public God
 {
 public:
     Werewolves(Map*);
+    static void HealthRestore(void);
     void WerewolfMove(void);
 };
 

@@ -11,6 +11,7 @@
 #define KEY_RIGHT 77
 #define KEY_Q 17
 #define KEY_P ('p')
+#define KEY_H ('h')
 
 using namespace std;
 
@@ -33,7 +34,7 @@ int God::getDefense(void)
 
 God::God(void)
 {
-	Health = 10;
+	//Health = 10;
 	Meds = rand() % 3;			// Range = [0,2]
 	Attack = (rand() % 3) + 1;	// Range = [1,3]
 	Defense = (rand() % 2) + 1;	// Range = [1,2]
@@ -136,20 +137,17 @@ Werewolves::Werewolves(Map *m)
 	// Map address
 	mp = m;				// Pass through the address of map
 
-	/*for (int i = 1; i <= m->getRows(); i++) {
-		for (int j = 1; j <= m->getCols(); j++) {				// κατι τετοιο ελεγα εγω σε φαση να βγουν αυτα στο πρωτο μισο
-			LocationX = (m->getRows() / 2) - 1;					// και τα vampire στο αλλο μισο
-			LocationY = (m->getCols() / 2) - j;					// ειναι σε πολυ προϊμο σταδιο η σκεψη αλλα ναι
-			m->InsertAt(LocationX, LocationY, 'W');
-		}
-	}*/
-	//}
 	// Place the wereolf at a random spot on the matrix
-	LocationX = rand() % m->getRows();		// Range: [0,Rows]		//επισης μπορουμε να κανουμε ενα if εδω και να πουμε 
-	LocationY = rand() % m->getCols();		// Range: [0,Cols]		// οτι αν εκει που παει να το τοποθετησει δεν ειναι *
-	m->InsertAt(LocationX, LocationY, 'W');							// τοτε ξανα κανε rand μεχρι να πεσει σε κενο κελι
+	LocationX = rand() % m->getRows();		// Range: [0,Rows]		
+	LocationY = rand() % m->getCols();		// Range: [0,Cols]
+	m->InsertAt(LocationX, LocationY, 'W');							
 
 };
+
+void Werewolves::HealthRestore(void)
+{
+	Health = 10;
+}
 
 void Werewolves::WerewolfMove(void)
 {
@@ -191,6 +189,11 @@ Vampires::Vampires(Map* m)
 	LocationY = 9;*/
 
 	m->InsertAt(LocationX, LocationY, 'V');
+}
+
+void Vampires::HealthRestore(void)
+{
+	Health = 10;
 }
 
 void Vampires::VampireMove(void)
@@ -369,6 +372,23 @@ char Avatar::Move(void)
 			// PAUSE
 			PauseGame(VampireCount, WerewolfCount);
 			break;
+
+		case(KEY_H):
+			// HEALTH RESTORE
+			if (Team_Selection == 'w' && isDaytime == false)
+			{
+				cout << "Using magic potion on Werewolves.\n";
+				Werewolves::HealthRestore();
+			}
+			else if (Team_Selection == 'v' && isDaytime == true)
+			{
+				cout << "Using magic potion on Vampires.\n";
+				Vampires::HealthRestore();
+			}
+			else
+			{
+				cout << "Cannot use magic potion at this time.\n";
+			}
 
 		default:
 			cout << "QUIT\n";
