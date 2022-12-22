@@ -33,7 +33,7 @@ int main(void)
 	vector<Vampires*> VampireVector;			//Create pointer vectors with vampires
 
 	// Calculate the number of monsters that'll be created
-	int MonstersNum = (x * y) / 30;
+	int MonstersNum = (x * y) / 15;
 
 	for (int i = 0; i < MonstersNum; i++)
 	{
