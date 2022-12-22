@@ -56,7 +56,7 @@ int main(void)
 
 	while (A.VampireCount != 0 || A.WerewolfCount != 0)
 	{
-		M.PrintMap();
+		//M.PrintMap();
 
 		// Change the time of day
 		if ((A.DaytimeCounter %= 5) == 0) {
@@ -84,13 +84,13 @@ int main(void)
 			WerewolfVector.at(i)->WerewolfMove();
 			VampireVector.at(i)->VampireMove();
 
-			// Combat condition check
+			M.PrintMap();
 
+			// Combat condition check
 			int WerewolfX = WerewolfVector.at(i)->getX();
 			int WerewolfY = WerewolfVector.at(i)->getY();
 			int VampireX = VampireVector.at(i)->getX();
 			int VampireY = VampireVector.at(i)->getY();
-
 
 			if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX -1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1))) {
 				if (((WerewolfY == VampireY - 1)) || (WerewolfY == VampireY + 1)) {
@@ -102,15 +102,15 @@ int main(void)
 					}
 				}
 			}
-
-			M.PrintMap();
-			A.PrintCurrentDayTime();
-			A.PrintCurrentTeam();
-
-			A.DaytimeCounter++;
-
-			A.Move();
 		}
+
+		//M.PrintMap();
+		A.PrintCurrentDayTime();
+		A.PrintCurrentTeam();
+
+		A.DaytimeCounter++;
+
+		A.Move();
 	}
 
 		cout << "A team has been eliminated.\n\nGAME OVER\n";
