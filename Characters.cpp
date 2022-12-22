@@ -384,9 +384,9 @@ void Avatar::PauseGame(int VampireCount, int WerewolfCount){
 	system("cls");  // Clear the screen;
 
 	cout << "GAME PAUSED\n\n";
-	cout << "Vampires alive:\t\t" << VampireCount << endl;
-	cout << "Werewolves alive:\t" << WerewolfCount << endl;
-	cout << "You have " << MagicPotCount << " magic potions available in your inventory.\n";
+	cout << "\033[0;31mVampires alive:\t\t" << VampireCount << "\033[0m\n";
+	cout << "\033[0;35mWerewolves alive:\t" << WerewolfCount << "\033[0m\n";
+	cout << "\033[0;33mYou have " << MagicPotCount << " magic potions available in your inventory.\033[0m\n";
 
 	cout << "\nDO YOU WANT TO CONTINUE? (y/n): ";
 	input = getch();
