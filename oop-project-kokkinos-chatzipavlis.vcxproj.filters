@@ -15,54 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Avatar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="God.cpp">
+    <ClCompile Include="Characters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vampire.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Werewolf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test_programs\InputConio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test_programs\inputtest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test_programs\kastrinis.cpp">
+    <ClCompile Include="Map2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Avatar.h">
+    <ClInclude Include="Characters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="God.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vampire.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Werewolf.h">
+    <ClInclude Include="Map2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

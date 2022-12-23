@@ -22,6 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{913321D9-9834-4FBF-B7D2-216298D24BA5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -97,22 +98,20 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Avatar.cpp" />
+    <ClCompile Include="Characters.cpp" />
     <ClCompile Include="client.cpp" />
-    <ClCompile Include="God.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Vampire.cpp" />
-    <ClCompile Include="Werewolf.cpp" />
+    <ClCompile Include="Map2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Avatar.h" />
-    <ClInclude Include="God.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="Vampire.h" />
-    <ClInclude Include="Werewolf.h" />
+    <ClInclude Include="Characters.h" />
+    <ClInclude Include="Map2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
