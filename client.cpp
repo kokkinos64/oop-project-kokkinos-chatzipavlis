@@ -48,9 +48,7 @@ int main(void)
 	A.PrintCurrentTeam();
 	M.PrintMap();
 
-	// Create vector iterators, used to traverse the vectors
-	/*vector<Werewolves*>::iterator itrW;
-	vector<Vampires*>::iterator itrV;*/
+
 	
 	A.Move();
 
@@ -89,17 +87,7 @@ int main(void)
 			int WerewolfY = WerewolfVector.at(i)->getY();
 			int VampireX = VampireVector.at(i)->getX();
 			int VampireY = VampireVector.at(i)->getY();
-			/*int EnemyX = 0, EnemyY = 0;*/
-
-			/*if (M.ScanArea(WerewolfX, WerewolfY, 'W', EnemyX, EnemyY) == true)
-			{
-				VampireVector.at(i)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(i)->getDefense());
-			}
-
-			if (M.ScanArea(VampireX, VampireY, 'V', EnemyX, EnemyY) == true)
-			{
-				VampireVector.at(i)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(i)->getDefense());
-			}*/
+			
 
 			if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX -1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1))) {
 				if (((WerewolfY == VampireY - 1)) || (WerewolfY == VampireY + 1)) {

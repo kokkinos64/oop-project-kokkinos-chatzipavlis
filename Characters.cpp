@@ -71,7 +71,6 @@ void God::MoveUp(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 
-	//mp->PrintMap();
 }
 
 void God::MoveDown(char c)
@@ -89,7 +88,6 @@ void God::MoveDown(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 	
-	//mp->PrintMap();
 }
 
 void God::MoveLeft(char c)
@@ -107,7 +105,6 @@ void God::MoveLeft(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 	
-	//mp->PrintMap();
 }
 
 void God::MoveRight(char c)
@@ -125,14 +122,13 @@ void God::MoveRight(char c)
 		mp->InsertAt(LocationX, LocationY, c);
 	}
 	
-	//mp->PrintMap();
 }
 
 // WEREWOLF MEMBER-FUNCTIONS
 
 Werewolves::Werewolves(Map *m)
 {
-	//srand((unsigned)time(NULL));	// Seed for rand
+
 
 	// Map address
 	mp = m;				// Pass through the address of map
@@ -151,7 +147,7 @@ void Werewolves::HealthRestore(void)
 
 void Werewolves::WerewolfMove(void)
 {
-	//srand((unsigned)time(NULL));	// Seed for rand
+	
 
 	int direction = rand() % 4;		// Range: [0,3]
 
@@ -176,7 +172,7 @@ void Werewolves::WerewolfMove(void)
 
 Vampires::Vampires(Map* m)
 {
-	//srand((unsigned)time(NULL));	// Seed for rand
+	
 
 	// Map address
 	mp = m;				// Pass through the address of map
@@ -185,8 +181,6 @@ Vampires::Vampires(Map* m)
 	LocationX = rand() % m->getRows();		// Range: [0,Rows]
 	LocationY = rand() % m->getCols();		// Range: [0,Cols]
 
-	/*LocationX = 9;
-	LocationY = 9;*/
 
 	m->InsertAt(LocationX, LocationY, 'V');
 }
