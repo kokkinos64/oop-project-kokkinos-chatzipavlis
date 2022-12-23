@@ -232,93 +232,94 @@ int Map::getCols(void)
 	return Cols;
 }
 
-//bool Map::ScanArea(int i, int j, char c, int &eX, int &eY)
-//{
-//	if (c == 'W')	// If i am a W
-//	{
-//		if (i - 1 < Rows && i > -1 && i + 1 < Rows)	// Check if i is out of limits
-//		{
-//			if (Matrix[i - 1][j] == 'V')
-//			{
-//				eX = i - 1;
-//				eY = j;
-//			}
-//			else if (Matrix[i + 1][j] == 'V')
-//			{
-//				eX = i + 1;
-//				eY = j;
-//			}
-//		}
-//		if (j - 1 < Cols && j > -1)	// Check if j is out of limits
-//		{
-//			if (Matrix[i][j - 1] == 'V')
-//			{
-//				eX = i;
-//				eY = j - 1;
-//			}
-//			else if (Matrix[i][j + 1] == 'V')
-//			{
-//				eX = i;
-//				eY = j + 1;
-//			}
-//		}
-//	}
-//	else if (c == 'V')	// If i am a V
-//	{
-//		if (i - 1 < Rows && i > -1)	// Check if i is out of limits
-//		{
-//			if (Matrix[i - 1][j] == 'V')
-//			{
-//				eX = i - 1;
-//				eY = j;
-//			}
-//			else if (Matrix[i + 1][j] == 'V')
-//			{
-//				eX = i + 1;
-//				eY = j;
-//			}
-//		}
-//		if (j - 1 < Cols && j > -1)	// Check if j is out of limits
-//		{
-//			if (Matrix[i][j - 1] == 'V')
-//			{
-//				eX = i;
-//				eY = j - 1;
-//			}
-//			else if (Matrix[i][j + 1] == 'V')
-//			{
-//				eX = i;
-//				eY = j + 1;
-//			}
-//		}
-//		if ((i - 1 < Rows && i > -1) && (j - 1 < Cols && j > -1))
-//		{
-//			if (Matrix[i + 1][j - 1] == 'W')
-//			{
-//				eX = i + 1;
-//				eY = j - 1;
-//			}
-//			else if (Matrix[i + 1][j + 1] == 'W')
-//			{
-//				eX = i + 1;
-//				eY = j + 1;
-//			}
-//			else if (Matrix[i - 1][j - 1] == 'W')
-//			{
-//				eX = i - 1;
-//				eY = j - 1;
-//			}
-//			else if (Matrix[i - 1][j + 1] == 'W')
-//			{
-//				eX = i - 1;
-//				eY = j + 1;
-//			}
-//		}
-//		
-//	}
-//
-//	return true;
-//}
+bool Map::ScanArea(int i, int j, char c, int &eX, int &eY)
+{
+	switch (c)
+	{
+	case('W'):
+		if (i - 1 > Rows && i > -1 && i + 1 < Rows)	// Check if i is out of limits
+		{
+			if (Matrix[i - 1][j] == 'V')
+			{
+				eX = i - 1;
+				eY = j;
+			}
+			else if (Matrix[i + 1][j] == 'V')
+			{
+				eX = i + 1;
+				eY = j;
+			}
+		}
+		else if (j - 1 < Cols && j > -1)	// Check if j is out of limits
+		{
+			if (Matrix[i][j - 1] == 'V')
+			{
+				eX = i;
+				eY = j - 1;
+			}
+			else if (Matrix[i][j + 1] == 'V')
+			{
+				eX = i;
+				eY = j + 1;
+			}
+		}
+		return true;
+		break;
+
+	case('V'):	// If i am a V
+		if (i - 1 < Rows && i > -1)	// Check if i is out of limits
+		{
+			if (Matrix[i - 1][j] == 'V')
+			{
+				eX = i - 1;
+				eY = j;
+			}
+			else if (Matrix[i + 1][j] == 'V')
+			{
+				eX = i + 1;
+				eY = j;
+			}
+		}
+		else if (j - 1 < Cols && j > -1)	// Check if j is out of limits
+		{
+			if (Matrix[i][j - 1] == 'V')
+			{
+				eX = i;
+				eY = j - 1;
+			}
+			else if (Matrix[i][j + 1] == 'V')
+			{
+				eX = i;
+				eY = j + 1;
+			}
+		}
+		else if ((i - 1 < Rows && i > -1) && (j - 1 < Cols && j > -1))
+		{
+			if (Matrix[i + 1][j - 1] == 'W')
+			{
+				eX = i + 1;
+				eY = j - 1;
+			}
+			else if (Matrix[i + 1][j + 1] == 'W')
+			{
+				eX = i + 1;
+				eY = j + 1;
+			}
+			else if (Matrix[i - 1][j - 1] == 'W')
+			{
+				eX = i - 1;
+				eY = j - 1;
+			}
+			else if (Matrix[i - 1][j + 1] == 'W')
+			{
+				eX = i - 1;
+				eY = j + 1;
+			}
+		}
+		return true;
+		break;
+	}
+}
 
 // Destructor
 Map::~Map(void)

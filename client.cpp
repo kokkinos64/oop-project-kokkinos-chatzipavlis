@@ -84,24 +84,52 @@ int main(void)
 			WerewolfVector.at(i)->WerewolfMove();
 			VampireVector.at(i)->VampireMove();
 
-			// Combat condition check
+			// Combat condition check: WEREWOLF
 			int WerewolfX = WerewolfVector.at(i)->getX();
 			int WerewolfY = WerewolfVector.at(i)->getY();
-			int VampireX = VampireVector.at(i)->getX();
-			int VampireY = VampireVector.at(i)->getY();
-			/*int EnemyX = 0, EnemyY = 0;*/
+			int EnemyX = 0, EnemyY = 0;
 
-			/*if (M.ScanArea(WerewolfX, WerewolfY, 'W', EnemyX, EnemyY) == true)
+			M.ScanArea(WerewolfX, WerewolfY, 'W', EnemyX, EnemyY);
+
+			for (int j = 0; j < MonstersNum; j++)
 			{
-				VampireVector.at(i)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(i)->getDefense());
+				// Find the vampire with the exact same coordinates
+				if ( (VampireVector.at(j)->getX() == EnemyX) && (VampireVector.at(j)->getY() == EnemyY) )
+				{
+					if (WerewolfVector.at(i)->getAttack() > VampireVector.at(j)->getAttack())
+					{
+						VampireVector.at(j)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(j)->getDefense());
+					}
+					else if ((VampireVector.at(j)->getAttack() > WerewolfVector.at(i)->getAttack()))
+					{
+						WerewolfVector.at(i)->HealthDecreaseBy(VampireVector.at(j)->getAttack() - WerewolfVector.at(i)->getDefense());
+					}
+				}
 			}
 
-			if (M.ScanArea(VampireX, VampireY, 'V', EnemyX, EnemyY) == true)
-			{
-				VampireVector.at(i)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(i)->getDefense());
-			}*/
+			// Combat condition check: VAMPIRE
+			int VampireX = VampireVector.at(i)->getX();
+			int VampireY = VampireVector.at(i)->getY();
 
-			if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX -1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1))) {
+			M.ScanArea(VampireX, VampireX, 'W', EnemyX, EnemyY);
+
+			for (int j = 0; j < MonstersNum; j++)
+			{
+				// Find the werewolf with the exact same coordinates
+				if ((VampireVector.at(j)->getX() == EnemyX) && (VampireVector.at(j)->getY() == EnemyY))
+				{
+					if (WerewolfVector.at(i)->getAttack() > VampireVector.at(j)->getAttack())
+					{
+						VampireVector.at(j)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(j)->getDefense());
+					}
+					else if ((VampireVector.at(j)->getAttack() > WerewolfVector.at(i)->getAttack()))
+					{
+						WerewolfVector.at(i)->HealthDecreaseBy(VampireVector.at(j)->getAttack() - WerewolfVector.at(i)->getDefense());
+					}
+				}
+			}
+
+			/*if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX -1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1))) {
 				if (((WerewolfY == VampireY - 1)) || (WerewolfY == VampireY + 1)) {
 					if (WerewolfVector.at(i)->getAttack() > VampireVector.at(i)->getAttack()) {
 						VampireVector.at(i)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(i)->getDefense());
@@ -110,7 +138,7 @@ int main(void)
 						WerewolfVector.at(i)->HealthDecreaseBy(VampireVector.at(i)->getAttack() - WerewolfVector.at(i)->getDefense());
 					}
 				}
-			}
+			}*/
 		}
 
 		M.PrintMap();

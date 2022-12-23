@@ -14,6 +14,6 @@ public:
 	void PrintMap(void);
 	int getRows(void);
 	int getCols(void);
-	//bool ScanArea(int, int, char, int&, int&);
+	bool ScanArea(int, int, char, int&, int&);
 	~Map(void);
 };
