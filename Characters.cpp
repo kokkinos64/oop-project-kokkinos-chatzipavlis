@@ -321,7 +321,7 @@ Avatar::Avatar(char t, Map *m) : Team_Selection(t)
 	isDaytime = true;	// Daytime at start of game
 }
 
-char Avatar::Move(void)
+void Avatar::Move(void)
 {
 	char key = getch();
 	int value = key;

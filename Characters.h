@@ -63,7 +63,7 @@ private:
 
 public:
     Avatar(char, Map*);   // Constructor
-    char Move(void);
+    void Move(void);
     void PauseGame(int, int);
     void PrintCurrentDayTime(void);
     void PrintCurrentTeam(void);
