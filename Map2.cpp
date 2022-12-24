@@ -156,7 +156,7 @@ void Map::PrintMap(void)
 	cout << "q (double-press) :\t Quit the game at any time\n";
 	cout << "p (double-press) :\t Pause the game at any time\n";
 	cout << "h (double-press) :\t Use magic potion on your team. (Keep an eye on the time of day!)\n";
-	cout << endl << endl;
+	cout << endl;
 
 	for (i = 0; i < Rows; i++)
 	{

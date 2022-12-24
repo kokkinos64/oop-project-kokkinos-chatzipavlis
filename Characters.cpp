@@ -406,11 +406,11 @@ void Avatar::PrintCurrentDayTime(void)
 
 	if (isDaytime == true)
 	{
-		cout << "DAY" << endl;
+		cout << "\033[0;31mDay\033[0m" << endl;		// Print "Day" in red color
 	}
 	else
 	{
-		cout << "NIGHT" << endl;
+		cout << "\033[0;35mNight\033[0m" << endl;	// Print "Night" in purple color
 	}
 }
 
@@ -420,11 +420,11 @@ void Avatar::PrintCurrentTeam(void)
 
 	if (Team_Selection == 'w')
 	{
-		cout << "Werewolves\n";
+		cout << "\033[0;35mWerewolves\033[0m\n";	// Print "Werewolves" in purple color
 	}
 	else
 	{
-		cout << "Vampires\n";
+		cout << "\033[0;31mVampires\033[0m\n";		// Print "Vampires" in red color
 	}
 }
 
@@ -439,13 +439,13 @@ void Avatar::UseMagicPot(void)
 	{
 		if (Team_Selection == 'w' && isDaytime == false)
 		{
-			cout << "Using magic potion on Werewolves.\n";
+			cout << "\033[0;35mUsing magic potion on Werewolves.\033[0m\n";		// Printed in purple color
 			Werewolves::HealthRestore();
 			MagicPotCount--;
 		}
 		else if (Team_Selection == 'v' && isDaytime == true)
 		{
-			cout << "Using magic potion on Vampires.\n";
+			cout << "\033[0;31mUsing magic potion on Vampires.\033[0m\n";		// Printed in red color
 			Vampires::HealthRestore();
 			MagicPotCount--;
 		}
