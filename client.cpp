@@ -19,9 +19,9 @@ int main(void)
 	cout << "Enter map dimentions (x y): ";
 	cin >> x >> y;
 
-	Map M(x, y);
+	Map *M = new Map(x, y);	// Dynamically-created map
 
-	M.PrintMap();
+	M->PrintMap();
 
 	// TEAM SELECTION
 	cout << "Select your team (w, v): ";
@@ -34,7 +34,7 @@ int main(void)
 	}
 
 	// AVATAR CREATION
-	Avatar *A = new Avatar(team,&M);			// Dynamcally-created avatar
+	Avatar *A = new Avatar(team,M);			// Dynamcally-created avatar
 
 	// WEREWOLF AND VAMPIRE CREATION
 	vector<Werewolves*> WerewolfVector;			//Create pointer vectors with werewolves
@@ -44,16 +44,16 @@ int main(void)
 
 	for (int i = 0; i < MonstersNum; i++)
 	{
-		WerewolfVector.push_back(new Werewolves(&M));
+		WerewolfVector.push_back(new Werewolves(M));
 		A->WerewolfCount++;
-		VampireVector.push_back(new Vampires(&M));
+		VampireVector.push_back(new Vampires(M));
 		A->VampireCount++;
 	}
 
 	// STARTING THE GAME
 	A->PrintCurrentDayTime();
 	A->PrintCurrentTeam();
-	M.PrintMap();
+	M->PrintMap();
 
 	A->Move();
 
@@ -141,6 +141,7 @@ int main(void)
 				{
 					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
 				}
+				// VAMPIRE IS RIGHT
 				else if (WerewolfY = VampireY + 1)
 				{
 					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
@@ -149,7 +150,7 @@ int main(void)
 		}
 
 		// PRINT MAP & STATS
-		M.PrintMap();
+		M->PrintMap();
 		A->PrintCurrentDayTime();
 		A->PrintCurrentTeam();
 
@@ -159,6 +160,7 @@ int main(void)
 	}
 
 	// TERMINATION
+	delete M;	// Memory dislocation fot the map
 	delete A;	// Memory dislocation for the avatar
 	cout << "GAME OVER\n";
 	system("timeout 5");
@@ -168,7 +170,7 @@ int main(void)
 // CUSTOM CLIENT FUNCTIONS
 void Attack(int& i, int& j, int& WerewolfAttack, int& VampireAttack, int& WerewolfDefence, int& VampireDefence, vector<Werewolves*>& WerewolfVector,vector<Vampires *>& VampireVector)
 {
-	//cout << "Encounter!\n"; ==> Uncommenting results in RemoveFrom() segmentation fault
+	//cout << "Encounter!\n"; // When using the stack to store the map, this results in STACK SMASHING at the RemoveFrom() function. On the other hand, when using the heap, it works perfectly fine.
 
 	if (WerewolfAttack > VampireAttack)	// Werewolf is stronger and attacks
 	{
