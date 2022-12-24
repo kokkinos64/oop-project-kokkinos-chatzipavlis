@@ -1,16 +1,16 @@
 #include <iostream>
 #include <conio.h>	// For keyboard input
 #include <cstdlib>	// For rand
-
 #include "Characters.h"
 #include "Map2.h"
 
+// Keyboard key numbers
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
-#define KEY_Q 17
-#define KEY_P ('p')
+#define KEY_Q 113
+#define KEY_P 112
 #define KEY_H 104
 
 using namespace std;
@@ -128,9 +128,6 @@ void God::MoveRight(char c)
 
 Werewolves::Werewolves(Map *m)
 {
-
-
-	// Map address
 	mp = m;				// Pass through the address of map
 
 	// Place the wereolf at a random spot on the matrix
@@ -170,9 +167,6 @@ void Werewolves::WerewolfMove(void)
 
 Vampires::Vampires(Map* m)
 {
-	
-
-	// Map address
 	mp = m;				// Pass through the address of map
 
 	// Place the wereolf at a random spot on the matrix
@@ -190,7 +184,6 @@ void Vampires::HealthRestore(void)
 
 void Vampires::VampireMove(void)
 {
-	
 	srand((unsigned)time(NULL));	// Seed for rand
 
 	int direction = rand() % 8;		// Range: [0,7]
@@ -362,10 +355,14 @@ char Avatar::Move(void)
 			system("timeout 2");
 			break;
 
-		default:
+		case(KEY_Q):
+			// QUIT
 			cout << "QUIT\n";
 			system("timeout 5");
 			exit(0);
+
+		default:
+			break;
 		}
 }
 
