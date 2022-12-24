@@ -88,28 +88,6 @@ int main(void)
 			WerewolfVector.at(i)->WerewolfMove();
 			VampireVector.at(i)->VampireMove();
 
-			// GET CURRENT MONSTER LOCATIONS
-			/*int WerewolfX = WerewolfVector.at(i)->getX();
-			int WerewolfY = WerewolfVector.at(i)->getY();
-			int VampireX = VampireVector.at(i)->getX();
-			int VampireY = VampireVector.at(i)->getY();*/
-			
-			// CHECK IF ENEMIES ARE IN CLOSE PROXIMITY TO EACH OTHER
-			/*if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1)))
-			{
-				if (((WerewolfY == VampireY - 1)) || (WerewolfY == VampireY + 1))
-				{
-					if (WerewolfVector.at(i)->getAttack() > VampireVector.at(i)->getAttack())
-					{
-						VampireVector.at(i)->HealthDecreaseBy(WerewolfVector.at(i)->getAttack() - VampireVector.at(i)->getDefense());
-					}
-					else if ((VampireVector.at(i)->getAttack() > WerewolfVector.at(i)->getAttack()))
-					{
-						WerewolfVector.at(i)->HealthDecreaseBy(VampireVector.at(i)->getAttack() - WerewolfVector.at(i)->getDefense());
-					}
-				}
-			}*/
-
 			// CHECK IF CURRENT WEREWOLF IS ANY CLOSE TO A VAMPIRE
 			int WerewolfX = WerewolfVector.at(i)->getX();
 			int WerewolfY = WerewolfVector.at(i)->getY();
