@@ -19,6 +19,7 @@ public:
 
     // Getters
     int getHealth(void);
+    int getMeds(void);
     int getAttack(void);
     int getDefense(void);
     int getX(void);
@@ -26,6 +27,8 @@ public:
 
     // Adjustment functions
     void HealthDecreaseBy(int);
+    void HealthIncrease(void);
+    void MedsDecrease(void);
 
     // Move commands (for everyone)
     void MoveUp(char c);

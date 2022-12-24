@@ -22,6 +22,11 @@ int God::getHealth(void)
     return Health;
 }
 
+int God::getMeds(void)
+{
+	return Meds;
+}
+
 int God::getAttack(void)
 {
     return Attack;
@@ -30,6 +35,16 @@ int God::getAttack(void)
 int God::getDefense(void)
 {
     return Defense;
+}
+
+void God::MedsDecrease(void)
+{
+	Meds--;	// Meds = Meds - 1
+}
+
+void God::HealthIncrease(void)
+{
+	Health++;	// Health = Health + 1
 }
 
 God::God(void)

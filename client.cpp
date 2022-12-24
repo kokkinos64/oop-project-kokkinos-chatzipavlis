@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 #include "Characters.h"
 #include "Map2.h"
 
@@ -8,12 +9,28 @@ using namespace std;
 // CUSTOM CLIENT FUNCTION PROTOTYPES
 void Attack(int&, int&, int&, int&, int&, int&, vector<Werewolves*>&, vector<Vampires*>&);
 
+template <typename T> void BuddyHealFunc(T &t, int &i, int &j)
+{
+	bool BuddyHeal = false;
+	
+	BuddyHeal = (bool)rand() % 2; // Range: [0,1]
+
+	if (BuddyHeal == true)
+	{
+		t.at(i)->MedsDecrease();
+		t.at(j)->HealthIncrease();
+	}
+}
+
 // MAIN FUNCTION
 int main(void)
 {
 	// VARIABLES FOR INPUT
-	int x, y;
+	int x, y, i ,j;
 	char team;
+	int WerewolfX, WerewolfX2, WerewolfY, WerewolfY2, WerewolfHealth, WerewolfHealth2, WerewolfMeds, WerewolfAttack, WerewolfDefense;
+	int VampireX, VampireX2, VampireY, VampireY2, VampireHealth, VampireHealth2, VampireMeds, VampireAttack, VampireDefense;
+	bool BuddyHeal;
 
 	// MAP CREATION
 	cout << "Enter map dimentions (x y): ";
@@ -42,7 +59,7 @@ int main(void)
 
 	int MonstersNum = (x * y) / 15;				// Calculate the members of each team, according to the dimentions of the map
 
-	for (int i = 0; i < MonstersNum; i++)
+	for (i = 0; i < MonstersNum; i++)
 	{
 		WerewolfVector.push_back(new Werewolves(M));
 		A->WerewolfCount++;
@@ -68,7 +85,7 @@ int main(void)
 		}
 
 		// Monster movements
-		for (int i = 0; i < MonstersNum; i++)
+		for (i = 0; i < MonstersNum; i++)
 		{
 			// CHECK THE HEALTH OF CURRENT WEREWOLF
 			if (WerewolfVector.at(i)->getHealth() == 0)
@@ -89,41 +106,125 @@ int main(void)
 			VampireVector.at(i)->VampireMove();
 
 			// CHECK IF CURRENT WEREWOLF IS ANY CLOSE TO A VAMPIRE
-			int WerewolfX = WerewolfVector.at(i)->getX();
-			int WerewolfY = WerewolfVector.at(i)->getY();
-			int WerewolfHealth = WerewolfVector.at(i)->getHealth();
-			int WerewolfAttack = WerewolfVector.at(i)->getAttack();
-			int WerewolfDefence = WerewolfVector.at(i)->getDefense();
+			 WerewolfX = WerewolfVector.at(i)->getX();
+			 WerewolfY = WerewolfVector.at(i)->getY();
+			 WerewolfHealth = WerewolfVector.at(i)->getHealth();
+			 WerewolfAttack = WerewolfVector.at(i)->getAttack();
+			 WerewolfDefense = WerewolfVector.at(i)->getDefense();
 
-			for (int j = 0; j < MonstersNum; j++)
+			for (j = 0; j < MonstersNum; j++)
 			{
 				// GET COORDINATES OF CURRENT VAMPIRE
-				int VampireX = VampireVector.at(j)->getX();
-				int VampireY = VampireVector.at(j)->getY();
-				int vampireHealth = VampireVector.at(i)->getHealth();
-				int VampireAttack = VampireVector.at(j)->getAttack();
-				int VampireDefence = VampireVector.at(j)->getDefense();
+				 VampireX = VampireVector.at(j)->getX();
+				 VampireY = VampireVector.at(j)->getY();
+				 VampireHealth = VampireVector.at(i)->getHealth();
+				 VampireAttack = VampireVector.at(j)->getAttack();
+				 VampireDefense = VampireVector.at(j)->getDefense();
 
 				// VAMPIRE IS UP
 				if (WerewolfX == VampireX - 1)
 				{
-					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefense, VampireDefense, WerewolfVector, VampireVector);
 				}
 				// VAMPIRE IS DOWN
 				else if (WerewolfX = VampireX + 1)
 				{
-					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefense, VampireDefense, WerewolfVector, VampireVector);
 				}
 				// VAMPIRE IS LEFT
 				else if (WerewolfY = VampireY - 1)
 				{
-					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefense, VampireDefense, WerewolfVector, VampireVector);
 				}
 				// VAMPIRE IS RIGHT
 				else if (WerewolfY = VampireY + 1)
 				{
-					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefense, VampireDefense, WerewolfVector, VampireVector);
 				}
+			}
+		}
+
+		// CHECK IF A FELLOW TEAMMATE IS LOW ON HEALTH
+
+		// WEREWOLVES
+		for (i = 0; i < MonstersNum; i++)
+		{
+			 WerewolfX = WerewolfVector.at(i)->getX();
+			 WerewolfY = WerewolfVector.at(i)->getY();
+			 WerewolfMeds = WerewolfVector.at(i)->getMeds();
+			
+			for (j = 0; j < MonstersNum; j++)
+			{
+				 WerewolfX2 = WerewolfVector.at(j)->getX();
+				 WerewolfY2 = WerewolfVector.at(j)->getY();
+				 WerewolfHealth2 = WerewolfVector.at(j)->getHealth();
+
+				// IF FELLOW WEREWOLF HAS HEALTH LESS THAN 10
+				if (WerewolfHealth2 < 10)
+				{
+					// IF FELLOW WEREWOLF IS UP
+					if (WerewolfX == WerewolfX2 - 1)
+					{
+						BuddyHealFunc <vector<Werewolves*>>(WerewolfVector, i, j);
+					}
+					// IF FELLOW WEREWOLF IS DOWN
+					else if (WerewolfX == WerewolfX2 + 1)
+					{
+						BuddyHealFunc <vector<Werewolves*>>(WerewolfVector, i, j);
+					}
+					// IF FELLOW WEREWOLF IS LEFT
+					else if (WerewolfY == WerewolfY2 - 1)
+					{
+						BuddyHealFunc <vector<Werewolves*>>(WerewolfVector, i, j);
+					}
+					// IF FELLOW WEREWOLF IS RIGHT
+					else if (WerewolfY == WerewolfY2 + 1)
+					{
+						BuddyHealFunc <vector<Werewolves*>>(WerewolfVector, i, j);
+					}
+				}
+				
+			}
+		}
+
+		// VAMPIRES
+		for (i = 0; i < MonstersNum; i++)
+		{
+			 VampireX = VampireVector.at(i)->getX();
+			 VampireY = VampireVector.at(i)->getY();
+			 VampireMeds = VampireVector.at(i)->getMeds();
+
+			for (j = 0; j < MonstersNum; j++)
+			{
+				 VampireX2 = VampireVector.at(j)->getX();
+				 VampireY2 = VampireVector.at(j)->getY();
+				 VampireHealth2 = VampireVector.at(j)->getHealth();
+
+				// IF FELLOW WEREWOLF HAS HEALTH LESS THAN 10
+				if (VampireHealth2 < 10)
+				{
+					// IF FELLOW WEREWOLF IS UP
+					if (VampireX == VampireX2 - 1)
+					{
+						BuddyHealFunc <vector<Vampires*>>(VampireVector, i, j);
+					}
+					// IF FELLOW WEREWOLF IS DOWN
+					else if (VampireX == VampireX2 + 1)
+					{
+						BuddyHealFunc <vector<Vampires*>>(VampireVector, i, j);
+					}
+					// IF FELLOW WEREWOLF IS LEFT
+					else if (VampireY == VampireY2 - 1)
+					{
+						BuddyHealFunc <vector<Vampires*>>(VampireVector, i, j);
+					}
+					// IF FELLOW WEREWOLF IS RIGHT
+					else if (VampireY == VampireY2 + 1)
+					{
+						BuddyHealFunc <vector<Vampires*>>(VampireVector, i, j);
+					}
+				}
+
 			}
 		}
 
@@ -146,17 +247,17 @@ int main(void)
 }
 
 // CUSTOM CLIENT FUNCTIONS
-void Attack(int& i, int& j, int& WerewolfAttack, int& VampireAttack, int& WerewolfDefence, int& VampireDefence, vector<Werewolves*>& WerewolfVector,vector<Vampires *>& VampireVector)
+void Attack(int& i, int& j, int& WerewolfAttack, int& VampireAttack, int& WerewolfDefense, int& VampireDefense, vector<Werewolves*>& WerewolfVector,vector<Vampires *>& VampireVector)
 {
 	//cout << "Encounter!\n"; // When using the stack to store the map, this results in STACK SMASHING at the RemoveFrom() function. On the other hand, when using the heap, it works perfectly fine.
 
 	if (WerewolfAttack > VampireAttack)	// Werewolf is stronger and attacks
 	{
-		VampireVector.at(j)->HealthDecreaseBy(WerewolfAttack - VampireDefence);	// Vampire's health decreases
+		VampireVector.at(j)->HealthDecreaseBy(WerewolfAttack - VampireDefense);	// Vampire's health decreases
 	}
 	else if (VampireAttack > WerewolfAttack) // Vampire is stronger and attacks
 	{
-		WerewolfVector.at(i)->HealthDecreaseBy(VampireAttack - WerewolfDefence);
+		WerewolfVector.at(i)->HealthDecreaseBy(VampireAttack - WerewolfDefense);
 	}
 	else // Attack levels are the same, do nothing
 	{
