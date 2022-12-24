@@ -242,8 +242,6 @@ void Vampires::MoveUpperLeft(void)
 		LocationY++;
 		mp->InsertAt(LocationX, LocationY, 'V');
 	}
-
-	mp->PrintMap();
 }
 
 void Vampires::MoveUpperRight(void)
@@ -262,8 +260,6 @@ void Vampires::MoveUpperRight(void)
 		LocationY--;
 		mp->InsertAt(LocationX, LocationY, 'V');
 	}
-
-	mp->PrintMap();
 }
 
 void Vampires::MoveLowerLeft(void)
@@ -282,8 +278,6 @@ void Vampires::MoveLowerLeft(void)
 		LocationY--;
 		mp->InsertAt(LocationX, LocationY, 'V');
 	}
-
-	mp->PrintMap();
 }
 
 void Vampires::MoveLowerRight(void)
@@ -302,8 +296,6 @@ void Vampires::MoveLowerRight(void)
 		LocationY--;
 		mp->InsertAt(LocationX, LocationY, 'V');
 	}
-
-	mp->PrintMap();
 }
 
 // AVATAR MEMBER-FUNCTIONS
