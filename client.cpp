@@ -5,6 +5,10 @@
 
 using namespace std;
 
+// CUSTOM CLIENT FUNCTION PROTOTYPES
+void Attack(int&, int&, int&, int&, int&, int&, vector<Werewolves*>&, vector<Vampires*>&);
+
+// MAIN FUNCTION
 int main(void)
 {
 	// VARIABLES FOR INPUT
@@ -85,13 +89,13 @@ int main(void)
 			VampireVector.at(i)->VampireMove();
 
 			// GET CURRENT MONSTER LOCATIONS
-			int WerewolfX = WerewolfVector.at(i)->getX();
+			/*int WerewolfX = WerewolfVector.at(i)->getX();
 			int WerewolfY = WerewolfVector.at(i)->getY();
 			int VampireX = VampireVector.at(i)->getX();
-			int VampireY = VampireVector.at(i)->getY();
+			int VampireY = VampireVector.at(i)->getY();*/
 			
-			// CHECK IF THEY ARE IN CLOSE PROXIMITY TO EACH OTHER
-			if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1)))
+			// CHECK IF ENEMIES ARE IN CLOSE PROXIMITY TO EACH OTHER
+			/*if (((WerewolfX == VampireX - 1)) || (WerewolfX == VampireX + 1) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX - 1) && (WerewolfX == VampireY + 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY - 1)) || ((WerewolfX == VampireX + 1) && (WerewolfX == VampireY + 1)))
 			{
 				if (((WerewolfY == VampireY - 1)) || (WerewolfY == VampireY + 1))
 				{
@@ -103,6 +107,43 @@ int main(void)
 					{
 						WerewolfVector.at(i)->HealthDecreaseBy(VampireVector.at(i)->getAttack() - WerewolfVector.at(i)->getDefense());
 					}
+				}
+			}*/
+
+			// CHECK IF CURRENT WEREWOLF IS ANY CLOSE TO A VAMPIRE
+			int WerewolfX = WerewolfVector.at(i)->getX();
+			int WerewolfY = WerewolfVector.at(i)->getY();
+			int WerewolfHealth = WerewolfVector.at(i)->getHealth();
+			int WerewolfAttack = WerewolfVector.at(i)->getAttack();
+			int WerewolfDefence = WerewolfVector.at(i)->getDefense();
+
+			for (int j = 0; j < MonstersNum; j++)
+			{
+				// GET COORDINATES OF CURRENT VAMPIRE
+				int VampireX = VampireVector.at(j)->getX();
+				int VampireY = VampireVector.at(j)->getY();
+				int vampireHealth = VampireVector.at(i)->getHealth();
+				int VampireAttack = VampireVector.at(j)->getAttack();
+				int VampireDefence = VampireVector.at(j)->getDefense();
+
+				// VAMPIRE IS UP
+				if (WerewolfX == VampireX - 1)
+				{
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+				}
+				// VAMPIRE IS DOWN
+				else if (WerewolfX = VampireX + 1)
+				{
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+				}
+				// VAMPIRE IS LEFT
+				else if (WerewolfY = VampireY - 1)
+				{
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
+				}
+				else if (WerewolfY = VampireY + 1)
+				{
+					Attack(i, j, WerewolfAttack, VampireAttack, WerewolfDefence, VampireDefence, WerewolfVector, VampireVector);
 				}
 			}
 		}
@@ -122,4 +163,23 @@ int main(void)
 	cout << "GAME OVER\n";
 	system("timeout 5");
 	return 0;
+}
+
+// CUSTOM CLIENT FUNCTIONS
+void Attack(int& i, int& j, int& WerewolfAttack, int& VampireAttack, int& WerewolfDefence, int& VampireDefence, vector<Werewolves*>& WerewolfVector,vector<Vampires *>& VampireVector)
+{
+	//cout << "Encounter!\n"; ==> Uncommenting results in RemoveFrom() segmentation fault
+
+	if (WerewolfAttack > VampireAttack)	// Werewolf is stronger and attacks
+	{
+		VampireVector.at(j)->HealthDecreaseBy(WerewolfAttack - VampireDefence);	// Vampire's health decreases
+	}
+	else if (VampireAttack > WerewolfAttack) // Vampire is stronger and attacks
+	{
+		WerewolfVector.at(i)->HealthDecreaseBy(VampireAttack - WerewolfDefence);
+	}
+	else // Attack levels are the same, do nothing
+	{
+		return;
+	}
 }
