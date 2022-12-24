@@ -142,8 +142,6 @@ void Map::RemoveFrom(int i, int j)
 	{
 		Matrix[i][j] = '*';		// Make it empty
 	}
-
-
 }
 
 void Map::PrintMap(void)
