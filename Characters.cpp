@@ -416,7 +416,7 @@ void Avatar::PrintCurrentDayTime(void)
 
 void Avatar::PrintCurrentTeam(void)
 {
-	cout << "Your team is ";
+	cout << "Your team is: ";
 
 	if (Team_Selection == 'w')
 	{
