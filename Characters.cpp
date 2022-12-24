@@ -147,8 +147,6 @@ void Werewolves::HealthRestore(void)
 
 void Werewolves::WerewolfMove(void)
 {
-	
-
 	int direction = rand() % 4;		// Range: [0,3]
 
 	switch (direction)

@@ -28,7 +28,8 @@ int main(void)
 
 	// OBJECT CREATION
 
-	Avatar A(team,&M);
+	Avatar *A = new Avatar(team,&M);			// Dynamcally-created avatar
+
 	vector<Werewolves*> WerewolfVector;			//Create pointer vectors with werewolves
 	vector<Vampires*> VampireVector;			//Create pointer vectors with vampires
 
@@ -38,27 +39,27 @@ int main(void)
 	for (int i = 0; i < MonstersNum; i++)
 	{
 		WerewolfVector.push_back(new Werewolves(&M));
-		A.WerewolfCount++;
+		A->WerewolfCount++;
 		VampireVector.push_back(new Vampires(&M));
-		A.VampireCount++;
+		A->VampireCount++;
 	}
 
 	// Starting the game
-	A.PrintCurrentDayTime();
-	A.PrintCurrentTeam();
+	A->PrintCurrentDayTime();
+	A->PrintCurrentTeam();
 	M.PrintMap();
 
 
 	
-	A.Move();
+	A->Move();
 
-	while (A.VampireCount != 0 || A.WerewolfCount != 0)
+	while (A->VampireCount != 0 || A->WerewolfCount != 0)
 	{
 		//M.PrintMap();
 
 		// Change the time of day
-		if ((A.DaytimeCounter %= 5) == 0) {
-			A.isDaytime = !(A.isDaytime);	// Switch daytime
+		if ((A->DaytimeCounter %= 5) == 0) {
+			A->isDaytime = !(A->isDaytime);	// Switch daytime
 			cout << "Daytime has changed\n";
 		}
 
@@ -69,13 +70,13 @@ int main(void)
 			if (WerewolfVector.at(i)->getHealth() == 0)
 			{
 				delete WerewolfVector.at(i);
-				A.WerewolfCount--;
+				A->WerewolfCount--;
 			}
 
 			if (VampireVector.at(i)->getHealth() == 0)
 			{
 				delete VampireVector.at(i);
-				A.VampireCount--;
+				A->VampireCount--;
 			}
 
 			// Move monsters
@@ -102,15 +103,16 @@ int main(void)
 		}
 
 		M.PrintMap();
-		A.PrintCurrentDayTime();
-		A.PrintCurrentTeam();
+		A->PrintCurrentDayTime();
+		A->PrintCurrentTeam();
 
-		A.DaytimeCounter++;
+		A->DaytimeCounter++;
 
-		A.Move();
+		A->Move();
 	}
 
-		cout << "A team has been eliminated.\n\nGAME OVER\n";
-		system("timeout 5");
+	delete A;	// Memory dislocation for the avatar
+	cout << "A team has been eliminated.\n\nGAME OVER\n";
+	system("timeout 5");
 	return 0;
 }
