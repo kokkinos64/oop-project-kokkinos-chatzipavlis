@@ -326,44 +326,44 @@ void Avatar::Move(void)
 	char key = getch();
 	int value = key;
 
-		switch (getch())
-		{
-		case(KEY_UP):
-			MoveUp('A');
-			break;
+	switch (getch())
+	{
+	case(KEY_UP):
+		MoveUp('A');
+		break;
 
-		case(KEY_DOWN):
-			MoveDown('A');
-			break;
+	case(KEY_DOWN):
+		MoveDown('A');
+		break;
 
-		case(KEY_LEFT):
-			MoveLeft('A');
-			break;
+	case(KEY_LEFT):
+		MoveLeft('A');
+		break;
 
-		case(KEY_RIGHT):
-			MoveRight('A');
-			break;
+	case(KEY_RIGHT):
+		MoveRight('A');
+		break;
 
-		case(KEY_P):
-			// PAUSE
-			PauseGame(VampireCount, WerewolfCount);
-			break;
+	case(KEY_P):
+		// PAUSE
+		PauseGame(VampireCount, WerewolfCount);
+		break;
 
-		case(KEY_H):
-			// HEALTH RESTORE
-			UseMagicPot();
-			system("timeout 2");
-			break;
+	case(KEY_H):
+		// HEALTH RESTORE
+		UseMagicPot();
+		system("timeout 2");
+		break;
 
-		case(KEY_Q):
-			// QUIT
-			cout << "QUIT\n";
-			system("timeout 5");
-			exit(0);
+	case(KEY_Q):
+		// QUIT
+		cout << "QUIT\n";
+		system("timeout 5");
+		exit(0);
 
-		default:
-			break;
-		}
+	default:
+		break;
+	}
 }
 
 void Avatar::PauseGame(int VampireCount, int WerewolfCount){
