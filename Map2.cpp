@@ -153,7 +153,12 @@ void Map::PrintMap(void)
 
 	system("cls");	// Reset terminal
 
-	cout << "Tip: You can double-press (p) to pause the game at any time.\n" << "Tip: While in-game, you can quit the game on the fly by double-pressing (q)\n\n";
+	cout << "CONTROLS:\n";
+	cout << "Dir. Arrow Keys  :\t Move your Avatar\n";
+	cout << "q (double-press) :\t Quit the game at any time\n";
+	cout << "p (double-press) :\t Pause the game at any time\n";
+	cout << "h (double-press) :\t Use magic potion on your team. (Keep an eye on the time of day!)\n";
+	cout << endl << endl;
 
 	for (i = 0; i < Rows; i++)
 	{
